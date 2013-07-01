@@ -1,0 +1,81 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      py:strip="">
+
+<py:match path="head" once="true"><head>
+    <title>Administration: ${select('title/text()')}</title>
+    ${select("*[local-name() != 'title']")}
+</head></py:match>
+
+<py:def function="admin_nav_list()">
+    <div class="section-container accordion" data-options="one_up: false" data-section="">
+        <section py:for="category, panels in groupby(panels, lambda p: p.category)"
+                 py:with="cat_is_active = category.id == active_cat" class="section ${'active' if cat_is_active else None}" >
+            <p class="title" style="left: 248px;">
+                <a href="#">${category.label}</a>
+            </p>
+            <div class="content" style="">
+                <ul class="side-nav">
+                    <li py:for="panel in panels" py:with="panel = panel.panel;
+                  pan_is_active = cat_is_active and panel.id == active_panel"
+                        class="${'active' if pan_is_active else None}">
+                        <a href="${href.admin(category.id, panel.id)}">${panel.label}</a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </div>
+</py:def>
+
+<py:def function="admin_function(fix_legacy)">
+    <div id="content" class="admin row">
+        <h1 class="">Administration</h1>
+        <div class="row">
+            <div class="large-9 push-3 columns">
+                <div id="tabcontent" class="">
+                    <py:choose>
+                        <py:when test="fix_legacy">
+                            ${select("div[@id='tabcontent']/*|text()")}
+                        </py:when>
+                        <py:otherwise>
+                            ${select("*|text()")}
+                        </py:otherwise>
+                    </py:choose>
+                    <br style="clear: right" />
+                </div>
+            </div>
+            <div class="large-3 pull-9 columns">
+                <div id="tabs">
+                    ${admin_nav_list()}
+                </div>
+            </div>
+        </div>
+    </div>
+</py:def>
+
+
+<py:choose>
+    <py:when test="zurb_fix_legacy">
+        <py:match path="div[@id='content' and @class='admin']" once="true"
+                  buffer="false">
+            ${admin_function(True)}
+        </py:match>
+    </py:when>
+    <py:otherwise>
+        <py:match path="head" once="true"><head>
+            <title>Administration: ${select('title/text()')}</title>
+            ${select("*[local-name() != 'title']")}
+        </head></py:match>
+
+        <py:match path="body" once="true" buffer="false"><body>
+        ${admin_function(False)}
+        </body></py:match>
+        <xi:include href="layout.html" />
+    </py:otherwise>
+</py:choose>
+
+</html>

@@ -1,0 +1,6 @@
+
+graft zurbtheme/htdocs
+graft zurbtheme/htdocs/css
+graft zurbtheme/htdocs/js
+graft zurbtheme/templates
+global-exclude *.pyc *.swp *.swo
