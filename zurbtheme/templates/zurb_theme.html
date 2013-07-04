@@ -27,15 +27,15 @@
             </div>
           </div>
         </div>
-          <div class="row large-6 columns right">
+          <div class="row large-8 columns right">
             <div id="topmenu" class="large-12">
               <!--! top menu (login, logout...) -->
               <py:with vars="meta_items = dict([i.name, i] for i in chrome.nav.metanav)">
-                <div id="usermenu" class="large-12 right text-right">
+                <div id="usermenu" class="row large-12 right">
                   <div class="metanav"> <span id="nav_login" py:choose="">
                     <py:when test="req.authname and req.authname != 'anonymous'"> <i class="icon-user"/>${req.authname} </py:when>
                     <py:otherwise> <a href="${req.href.login()}">${_("Login")}</a> </py:otherwise>
-                    </span> <span py:if="'logout' in meta_items" id="nav_logout"> ${meta_items.logout.label} </span> <span py:if="'prefs' in meta_items"> ${meta_items.prefs.label} </span> <span py:if="'help' in meta_items"> ${meta_items.help.label} </span> <span py:if="'about' in meta_items"> ${meta_items.about.label} </span> </div>
+                    </span> <span py:if="'logout' in meta_items" id="nav_logout"> ${meta_items.logout.label} </span> <span py:if="'prefs' in meta_items"> ${meta_items.prefs.label} </span> <span py:if="'help' in meta_items"> ${meta_items.help.label} </span> <span class="last" py:if="'about' in meta_items"> ${meta_items.about.label} </span> </div>
                 </div>
               </py:with>
             </div>
@@ -48,15 +48,18 @@
                         <input type="text" id="proj-search" name="q" size="35" accesskey="f" value="" placeholder="Enter your search..."/>
                       </div>
                       <div class="large-6 small-6 columns">
-                         <div class="large-6 small-6 columns">
+                         <div class="large-5 small-5 columns">
                             <input class="button postfix" type="submit" value="${_('Search')}" />
                          </div>
-                         <div class="large-6 small-6 columns">
+                         <div class="large-7 small-7 columns">
                           <a href="${href.newticket()}">
                             <input class="button alert postfix" type="button" value="${_('New Ticket')}"/>
                           </a>
                          </div>
                       </div>
+                        <div class="columns small-12 large-12" style="margin-top: -10px; font-size: 11px; margin-bottom: 10px;">
+                           <a href="${href.search()}">Advanced ${_('Search')}</a>
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -75,9 +78,6 @@
           <nav class="top-bar">
             <ul class="title-area">
               <!-- Title Area -->
-              <li class="name">
-                <h1><a href="#">Trac</a></h1>
-              </li>
               <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
               <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
             </ul>

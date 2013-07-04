@@ -132,6 +132,8 @@ class ZurbTheme(ThemeBase):
         if self.is_active_theme:
             add_stylesheet(req, 'theme/css/foundation.css')
             add_stylesheet(req, 'theme/css/zurb_browser.css')
+            add_stylesheet(req, 'theme/css/zurb_milestone.css')
+            add_stylesheet(req, 'theme/css/zurb_tickets.css')
             add_script(req, 'theme/js/custom.modernizr.js')
             add_script(req, 'theme/js/foundation.min.js')
             #add_script(req, 'theme/js/jquery.js')

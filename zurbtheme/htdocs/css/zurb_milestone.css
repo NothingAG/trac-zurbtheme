@@ -1,0 +1,138 @@
+table.progress {
+    border: 1px solid #D7D7D7;
+    border-collapse: collapse;
+    border-spacing: 0;
+    box-shadow: 0 0 1em #EEEEEE;
+    empty-cells: show;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+table.progress a, table.progress *:link, table.progress *:visited, table.progress *:link:hover, table.progress *:visited:hover {
+    border: medium none;
+    display: block;
+    height: 1.2em;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    width: 100%;
+}
+table.progress td {
+    background: none repeat scroll 0 0 #FFFFFF;
+    padding: 0;
+}
+table.progress td.new {
+    background: none repeat scroll 0 0 #F5F5B5;
+}
+table.progress td.closed {
+    background: none repeat scroll 0 0 #BAE0BA;
+}
+table.progress td *:hover {
+    background: none repeat scroll 0 0 transparent;
+}
+p.percent {
+    line-height: 1.2em;
+    margin: 0;
+}
+.milestones {
+    margin: 2em 0 0;
+    padding: 0;
+}
+.milestone {
+    margin-bottom: 4em;
+}
+.milestone .info {
+    white-space: nowrap;
+}
+.milestone .info h2 {
+    background: none repeat scroll 0 0 #F7F7F7;
+    border-bottom: 1px solid #D7D7D7;
+    border-radius: 0.1em 0.1em 0.1em 0.1em;
+    box-shadow: 1px 1px 0.5em 0 #CCCCCC;
+    margin: 0.5em 0;
+}
+.milestone .info h2 *:link, .milestone .info h2 *:visited {
+    border-bottom: medium none;
+    color: #000000;
+    display: block;
+    padding: 0.2em 0.4em;
+}
+.milestone .info h2 *:link:hover, .milestone .info h2 *:visited:hover {
+    color: #000000;
+}
+.milestone .info h2 em {
+    color: #BB0000;
+    font-style: normal;
+}
+.milestone .info .date {
+    color: #888888;
+    font-size: 12px;
+    font-style: italic;
+    margin: 0 0 1em;
+}
+.milestone .description {
+    margin-left: 1em;
+}
+.milestone .date {
+    color: #888888;
+    font-style: italic;
+    margin: 0;
+}
+.milestone .description {
+    margin: 1em 0 2em;
+}
+#stats {
+    float: right;
+    margin: 0 1em 2em 2em;
+    max-width: 40%;
+    padding: 0;
+    width: 400px;
+}
+#stats legend {
+    white-space: nowrap;
+}
+.trac-progress .progress, .trac-groupprogress {
+    margin: 0 1em;
+    max-width: 70%;
+    width: 40em;
+}
+.trac-progress .legend {
+    clear: left;
+    font-size: 12px;
+    font-style: italic;
+    margin: 1em 1em 2em;
+    white-space: nowrap;
+}
+.trac-progress .legend .interval {
+    margin: 0 0.8em;
+}
+.trac-groupprogress table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.trac-groupprogress th, .trac-groupprogress td {
+    font-size: 12px;
+    padding: 0;
+    white-space: nowrap;
+}
+.trac-groupprogress th {
+    text-align: right;
+}
+.trac-groupprogress th *:link, .trac-groupprogress th *:visited {
+    border: medium none;
+}
+.trac-groupprogress td {
+    padding-left: 0.5em;
+    width: 100%;
+}
+.trac-groupprogress table.progress {
+    box-shadow: none;
+    margin: 3px 1em 3px 0;
+}
+.trac-groupprogress table.progress td {
+    padding: 0;
+}
+.trac-groupprogress p.percent {
+    margin-top: 3px;
+    white-space: nowrap;
+}

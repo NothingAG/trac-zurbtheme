@@ -708,7 +708,7 @@ pre {
 #ticket .date {
     color: #999966;
     float: right;
-    font-size: 85%;
+    font-size: 90%;
     position: relative;
     top: -0.2em;
 }
@@ -1660,287 +1660,6 @@ button.trac-revert, button.trac-revert:hover {
     padding-left: 20px;
 }
 
-.tickets tr.color1-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #FFEEDD;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #EE9999;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #EE9999;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #EE9999;
-    border-top-color: #EE9999;
-    color: #AA2222;
-}
-.tickets tr.color2-odd {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #FFFFBB;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #EEEEAA;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #EEEEAA;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #EEEEAA;
-    border-top-color: #EEEEAA;
-    color: #888800;
-}
-.tickets tr.color2-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #FFFFDD;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #DDDD88;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #DDDD88;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #DDDD88;
-    border-top-color: #DDDD88;
-    color: #888800;
-}
-.tickets tr.color3-odd {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #FBFBFB;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #DDDDDD;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #DDDDDD;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #DDDDDD;
-    border-top-color: #DDDDDD;
-    color: #444444;
-}
-.tickets tr.color3-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F6F6F6;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #CCCCCC;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #CCCCCC;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #CCCCCC;
-    border-top-color: #CCCCCC;
-    color: #333333;
-}
-.tickets tr.color4-odd {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #E7FFFF;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #CCEEEE;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #CCEEEE;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #CCEEEE;
-    border-top-color: #CCEEEE;
-    color: #009999;
-}
-.tickets tr.color4-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #DDFFFF;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #BBEEEE;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #BBEEEE;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #BBEEEE;
-    border-top-color: #BBEEEE;
-    color: #009999;
-}
-.tickets tr.color5-odd {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #E7EEFF;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #CCDDEE;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #CCDDEE;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #CCDDEE;
-    border-top-color: #CCDDEE;
-    color: #446699;
-}
-.tickets tr.color5-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #DDE7FF;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #CCDDEE;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #CCDDEE;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #CCDDEE;
-    border-top-color: #CCDDEE;
-    color: #446699;
-}
-.tickets tr.color6-odd {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F0F0F0;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #DDDDDD;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #DDDDDD;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #DDDDDD;
-    border-top-color: #DDDDDD;
-    color: #888888;
-}
-.tickets tr.color6-even {
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: #F7F7F7;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: #DDDDDD;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: #DDDDDD;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: #DDDDDD;
-    border-top-color: #DDDDDD;
-    color: #888888;
-}
-.tickets tr.color6-odd a, .color6-even a {
-    color: #BB6666;
-}
-.tickets tbody tr.fullrow td, .tickets tbody td.fullrow {
-    -moz-border-bottom-colors: none;
-    -moz-border-left-colors: none;
-    -moz-border-right-colors: none;
-    -moz-border-top-colors: none;
-    background-attachment: scroll;
-    background-clip: border-box;
-    background-color: transparent;
-    background-image: none;
-    background-origin: padding-box;
-    background-position: 0 0;
-    background-repeat: repeat;
-    background-size: auto auto;
-    border-bottom-color: -moz-use-text-color;
-    border-bottom-style: none;
-    border-bottom-width: medium;
-    border-image-outset: 0 0 0 0;
-    border-image-repeat: stretch stretch;
-    border-image-slice: 100% 100% 100% 100%;
-    border-image-source: none;
-    border-image-width: 1 1 1 1;
-    border-left-color-ltr-source: physical;
-    border-left-color-rtl-source: physical;
-    border-left-color-value: -moz-use-text-color;
-    border-left-style-ltr-source: physical;
-    border-left-style-rtl-source: physical;
-    border-left-style-value: none;
-    border-left-width-ltr-source: physical;
-    border-left-width-rtl-source: physical;
-    border-left-width-value: medium;
-    border-right-color-ltr-source: physical;
-    border-right-color-rtl-source: physical;
-    border-right-color-value: -moz-use-text-color;
-    border-right-style-ltr-source: physical;
-    border-right-style-rtl-source: physical;
-    border-right-style-value: none;
-    border-right-width-ltr-source: physical;
-    border-right-width-rtl-source: physical;
-    border-right-width-value: medium;
-    border-top-color: -moz-use-text-color;
-    border-top-style: none;
-    border-top-width: medium;
-    color: #333333;
-    font-size: 85%;
-    padding-bottom: 0 !important;
-    padding-left: 1em !important;
-    padding-right: 1em !important;
-    padding-top: 0 !important;
-}
-.tickets tbody tr.fullrow:hover {
-    background-attachment: scroll !important;
-    background-clip: border-box !important;
-    background-color: transparent !important;
-    background-image: none !important;
-    background-origin: padding-box !important;
-    background-position: 0 0 !important;
-    background-repeat: repeat !important;
-    background-size: auto auto !important;
-}
-.tickets .fullrow *:link, .tickets .fullrow *:visited {
-    display: inline;
-}
-.tickets .fullrow .meta {
-    color: #999999;
-}
-.tickets .fullrow hr {
-    display: none;
-}
-
 .system-message {
     background-color: #F6F6F6;
     border-bottom-color: gainsboro;
@@ -1982,5 +1701,16 @@ button.trac-revert, button.trac-revert:hover {
     padding-left: 0.875em;
     padding-right: 0.875em;
     padding-top: 0.5625em;
+}
+
+metanav span {
+    border-right: 1px solid #D7D7D7;
+    display: inline-block;
+    padding: 0 0.65em;
+    white-space: nowrap;
+}
+
+.metanav span.last {
+     border-right: medium none;
 }
 /* @end */
