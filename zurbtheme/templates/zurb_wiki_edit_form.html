@@ -72,16 +72,16 @@
     </fieldset>
     <div class="buttons" py:choose="action">
       <py:when test="'collision'">
-        <input class="small button" type="submit" name="preview" value="${_('Preview')}" disabled="disabled" />&nbsp;
-        <input class="small button" type="submit" name="merge" value="${_('Merge changes')}" accesskey="r" />&nbsp;
-        <input class="small button" type="submit" name="save" value="${_('Submit changes')}" disabled="disabled" />&nbsp;
+        <input class="tiny button" type="submit" name="preview" value="${_('Preview')}" disabled="disabled" />&nbsp;
+        <input class="tiny button" type="submit" name="merge" value="${_('Merge changes')}" accesskey="r" />&nbsp;
+        <input class="tiny button" type="submit" name="save" value="${_('Submit changes')}" disabled="disabled" />&nbsp;
       </py:when>
       <py:otherwise>
-        <input class="small button" type="submit" name="preview" value="${_('Preview Page')}" accesskey="p" />&nbsp;
-        <input class="small button" type="submit" name="diff" value="${_('Review Changes')}" accesskey="r" />&nbsp;
-        <input class="small button" type="submit" id="save" name="save" value="${_('Submit changes')}" />&nbsp;
+        <input class="tiny button" type="submit" name="preview" value="${_('Preview Page')}" accesskey="p" />&nbsp;
+        <input class="tiny button" type="submit" name="diff" value="${_('Review Changes')}" accesskey="r" />&nbsp;
+        <input class="tiny button" type="submit" id="save" name="save" value="${_('Submit changes')}" />&nbsp;
       </py:otherwise>
-      <input class="small button" type="submit" name="cancel" value="${_('Cancel')}" />
+      <input class="tiny button" type="submit" name="cancel" value="${_('Cancel')}" />
     </div>
   </form>
 </html>

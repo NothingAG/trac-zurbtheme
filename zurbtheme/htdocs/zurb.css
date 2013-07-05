@@ -4,8 +4,18 @@ body{
 }
 
 h1{
-    font-size: 1.75em !important;
+    font-size: 1.45em !important;
 }
+h2{
+    font-size: 1.35em !important;
+}
+h3{
+    font-size: 1.25em !important;
+}
+h4{
+    font-size: 1.15em !important;
+}
+
 
 .buttons form, .buttons form div {
     display: inline;
@@ -29,6 +39,16 @@ a:focus, .side-nav li a:hover, .side-nav li a:focus {
     color: #16C0EA;
 }
 
+#changelog a:hover {
+    color: #708090;
+    border-bottom: 1px dotted #BBBBBB;
+}
+
+#changelog a{
+    color: #666666;
+    border-bottom: 1px dotted #BBBBBB;
+}
+
 #altlinks {
     clear: both;
     margin-top: 0.4em;
@@ -37,7 +57,7 @@ a:focus, .side-nav li a:hover, .side-nav li a:focus {
 
 
 #altlinks h3 {
-    font-size: 12px;
+    font-size: 12px !important;
     letter-spacing: normal;
     margin-bottom: 0;
     margin-left: 0;
@@ -141,7 +161,7 @@ a:focus, .side-nav li a:hover, .side-nav li a:focus {
 }
 
 .nav-header-selected {
-    color: #b94a48;
+    color: #2BA6CB;
 }
 
 /* @end */
@@ -464,6 +484,36 @@ dt.changeset, dt.changeset a {
     background-image: url(../common/changeset.png) !important;
     background-repeat: no-repeat;
 }
+dt.newticket, dt.newticket a {
+    background-image: url(../common/newticket.png) !important;
+    background-repeat: no-repeat;
+}
+dt.reopenedticket, dt.reopenedticket a {
+    background-image: url(../common/newticket.png) !important;
+    background-repeat: no-repeat;
+}
+dt.editedticket, dt.editedticket a {
+    background-image: url(../common/editedticket.png) !important;
+    background-repeat: no-repeat;
+}
+dt.closedticket, dt.closedticket a {
+    background-image: url(../common/closedticket.png) !important;
+    background-repeat: no-repeat;
+}
+dt.batchmodify, dt.batchmodify a {
+    background-image: url(../common/batchmodify.png) !important;
+    background-repeat: no-repeat;
+}
+dt.milestone, dt.milestone a {
+    background-image: url(../common/milestone.png) !important;
+    background-repeat: no-repeat;
+}
+dt.attachment, dt.attachment a {
+    background-image: url(../common/attachment.png) !important;
+    background-repeat: no-repeat;
+}
+
+
 
 dt .time {
     color: #999999;
@@ -478,7 +528,7 @@ dt em {
     border-bottom-color: #BBBBBB;
     border-bottom-style: dotted;
     border-bottom-width: 1px;
-    color: #BB0000;
+    color: #2ba6cb;
     font-style: normal;
 }
 
@@ -1002,10 +1052,6 @@ table.listing th.sel, table.listing td.sel {
     max-width: 70em;
 }
 
-h2 {
-    font-size: 2.0em !important
-}
-
 #usermenu{
     margin-top: 10px;
     font-size: 14px;
@@ -1030,13 +1076,23 @@ form #search{
 
 /* @group Wiki Toolbar */
 
+form .field .wikitoolbar {
+    margin-left: -1px;
+}
+
 .wikitoolbar {
-    margin-top: 0.3em;
-    margin-left: 2px;
-    border: solid #d7d7d7;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #D7D7D7;
+    border-image: none;
+    border-style: solid;
     border-width: 1px 1px 1px 0;
     height: 18px;
-    width: 234px;
+    margin-left: 2px;
+    margin-top: 0.3em;
+    width: 218px;
 }
 .wikitoolbar :link, .wikitoolbar :visited {
     background: transparent url(../common/edit_toolbar.png) no-repeat;
@@ -1284,10 +1340,10 @@ textarea{
     padding-top: 2px;
     text-align: left;
 }
-
+/*
 #trac-plugin-Trac h3{
     font-size: 1.4em;
-}
+}*/
 
 #fullsearch.custom .custom.checkbox.checked:before {
     margin-left: 0 !important;
@@ -1426,23 +1482,23 @@ div.reports .inlinebutton {
 div.reports .inlinebutton {
     margin-left: 10px;
 }
-
+/*
 div.reports h2 {
     font-size: 20px;
-}
+}*/
 
 .report #trac-sort-order {
     float: right;
     font-size: 12px;
     font-weight: normal;
 }
-
+/*
 .reports h2{
     font-size: 25px !important;
-}
+}*/
 
 .reports h3{
-    font-size: 20px !important;
+    font-size: 16px !important;
 }
 /* @group Section folding */
 
@@ -1540,7 +1596,7 @@ div.reports h2 {
     border-bottom-width: 1px;
     box-shadow: 0.1em 0.4em 0.7em 0 #F2F2F2;
     color: #999999;
-    font-size: 100%;
+    font-size: 14px !important;
     font-weight: normal;
     margin-bottom: 0.5em;
     padding-bottom: 0;
@@ -1556,10 +1612,10 @@ div.reports h2 {
 .trac-ticket-buttons form{
     margin-bottom: 0px;
 }
-
+/*
 #tabcontent h3{
     font-size: 1.25em !important;
-}
+}*/
 
 a.missing:link, a.missing:visited, a.missing, span.missing, a.forbidden, span.forbidden {
     color: #999988;
@@ -1703,7 +1759,7 @@ button.trac-revert, button.trac-revert:hover {
     padding-top: 0.5625em;
 }
 
-metanav span {
+.metanav span {
     border-right: 1px solid #D7D7D7;
     display: inline-block;
     padding: 0 0.65em;
@@ -1712,5 +1768,74 @@ metanav span {
 
 .metanav span.last {
      border-right: medium none;
+}
+
+.myfiltersearch label{
+    display: inline !important;
+}
+
+.citation blockquote.citation {
+    border-color: #44BB44;
+}
+
+blockquote.citation {
+    border-color: #BB4444;
+    border-style: solid;
+    border-width: 0 0 0 2px;
+    margin: -0.6em 0;
+    padding-left: 0.5em;
+}
+
+#overview .files li {
+    list-style-type: none;
+}
+
+#overview .files li div {
+    border: 1px solid #999999;
+    float: left;
+    height: 0.8em;
+    margin: 0.2em 0.5em 0 0;
+    overflow: hidden;
+    width: 0.8em;
+}
+
+.chglist .edit, #overview .mod, .diff .legend .mod {
+    background: none repeat scroll 0 0 #FFDD88;
+}
+
+.report #trac-sort-order a.asc {
+    background-image: url(../common/asc.png);
+    font-weight: bold;
+    padding-right: 12px;
+}
+
+.report #trac-sort-order a.desc {
+    background-image: url(../common/desc.png);
+    font-weight: bold;
+    padding-right: 12px;
+}
+
+.report div.reports h2 {
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0.1em 0.4em 0.7em 0 #F2F2F2;
+    padding: 0.2em 0.3em 0.1em;
+}
+
+.report #trac-sort-order a {
+    background-position: 100% 50%;
+    background-repeat: no-repeat;
+    margin-left: 4px;
+}
+
+.threading {
+    font-size: 85%;
+}
+
+.threading, #changelog .inlinebuttons {
+    float: right;
+}
+
+#changelog .change{
+    margin-bottom: 15px;
 }
 /* @end */

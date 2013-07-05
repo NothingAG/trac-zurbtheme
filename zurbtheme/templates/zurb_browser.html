@@ -91,7 +91,7 @@
                             <option py:for="_, name, path, rev in locations" value="${href.browser(reponame, path, rev=rev)}">$name</option>
                         </optgroup>
                     </select>
-                    <input class="small button" type="submit" value="${_('Go!')}" title="Jump to the chosen preselected path" />
+                    <input class="tiny button" type="submit" value="${_('Go!')}" title="Jump to the chosen preselected path" />
                 </div>
             </form>
         </div>
@@ -214,7 +214,7 @@
                 <input type="hidden" name="old_path" value="${'/' + pathjoin(reponame, path)}" />
                 <input type="hidden" name="new_rev" value="$stickyrev" />
                 <input type="hidden" name="old_rev" value="$stickyrev" />
-                <input class="small button" type="submit" value="${_('View changes...')}" title="Select paths and revs for Diff" />
+                <input class="tiny button" type="submit" value="${_('View changes...')}" title="Select paths and revs for Diff" />
             </div>
         </form>
     </div>

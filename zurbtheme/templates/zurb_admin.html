@@ -6,11 +6,6 @@
       xmlns:py="http://genshi.edgewall.org/"
       py:strip="">
 
-<py:match path="head" once="true"><head>
-    <title>Administration: ${select('title/text()')}</title>
-    ${select("*[local-name() != 'title']")}
-</head></py:match>
-
 <py:def function="admin_nav_list()">
     <div class="section-container accordion" data-options="one_up: false" data-section="">
         <section py:for="category, panels in groupby(panels, lambda p: p.category)"
