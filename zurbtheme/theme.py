@@ -22,8 +22,10 @@ from trac.util.translation import _
 from trac.versioncontrol.web_ui.browser import BrowserModule
 from trac.web.api import IRequestFilter, IRequestHandler, ITemplateStreamFilter
 from trac.web.chrome import (add_script, add_stylesheet, INavigationContributor,
-                             ITemplateProvider, prevnext_nav, Chrome)
+                             ITemplateProvider, prevnext_nav, Chrome, add_ctxtnav, add_meta)
 from trac.wiki.admin import WikiAdmin
+
+from trac.admin.web_ui import INavigationContributor
 
 from themeengine.api import ThemeBase, ThemeEngineSystem
 from trac.web.chrome import add_stylesheet, add_script
@@ -98,7 +100,7 @@ class ZurbTheme(ThemeBase):
         'revisionlog.html' : ('zurb_revisionlog.html', None),
         'diff_form.html' : ('zurb_diff_form.html', None),
         'browser.html' : ('zurb_browser.html', None),
-        #'changeset.html' : ('zurb_changeset.html', None),
+        'changeset.html' : ('zurb_changeset.html', None),
 
         # General purpose
         'about.html' : ('zurb_about.html', None),
@@ -116,6 +118,19 @@ class ZurbTheme(ThemeBase):
 
     Chrome.default_html_doctype = DocType.HTML5
 
+    # INavigationContributor methods
+
+    implements(INavigationContributor)
+
+    def get_active_navigation_item(self, req):
+        return
+
+    def get_navigation_items(self, req):
+        # The 'Admin' navigation item is only visible if at least one
+        # admin panel is available
+        if "TRAC_ADMIN" in req.perm:
+            yield 'metanav', 'zadmin', tag.a(_('Admin'), href=req.href.admin(), title=_('Administration'))
+
     implements(IRequestFilter, ITemplateProvider)
 
     # IRequestFilter methods
@@ -128,10 +143,16 @@ class ZurbTheme(ThemeBase):
     def post_process_request(self, req, template, data, content_type):
         """Post process request filter.
         Removes all trac provided css if required"""
+        #if "TRAC_ADMIN" in req.perm:
+        #    add_ctxtnav(req, "Admin", "#", "Admin")
+
+        add_meta(req, "width=device-width", http_equiv=None, name="viewport", scheme=None, lang=None)
 
         if self.is_active_theme:
             add_stylesheet(req, 'theme/css/foundation.css')
             add_stylesheet(req, 'theme/css/zurb_browser.css')
+            add_stylesheet(req, 'theme/css/zurb_milestone.css')
+            add_stylesheet(req, 'theme/css/zurb_tickets.css')
             add_script(req, 'theme/js/custom.modernizr.js')
             add_script(req, 'theme/js/foundation.min.js')
             #add_script(req, 'theme/js/jquery.js')

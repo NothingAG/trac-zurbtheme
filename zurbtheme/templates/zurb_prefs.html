@@ -6,11 +6,6 @@
       xmlns:py="http://genshi.edgewall.org/"
       py:strip="">
 
-<py:match path="head" once="true"><head>
-    <title>Preferences: ${select('title/text()')}</title>
-    ${select("*[local-name() != 'title']")}
-</head></py:match>
-
 <py:def function="intro_and_tabs()">
     <h1>Preferences</h1>
     <p>This page lets you customize your personal settings for this site.
@@ -42,7 +37,7 @@
                             ${select("*|text()")}
                             <div class="buttons" py:if="not has_forms">
                                 <input type="hidden" name="action" value="save" />
-                                <input class="small button" type="submit" value="${_('Save changes')}" />
+                                <input class="tiny button" type="submit" value="${_('Save changes')}" />
                             </div >
                         </form>
                     </div>

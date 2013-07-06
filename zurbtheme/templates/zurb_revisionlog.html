@@ -84,7 +84,7 @@
                   </label>
               </div>
               <div class="buttons large-2 right" style="margin-top: 20px; margin-left: 10px;">
-                  <input class="small button" type="submit" value="${_('Update')}" />
+                  <input class="tiny button" type="submit" value="${_('Update')}" />
               </div>
          </div>
 
@@ -107,7 +107,7 @@
       <form py:for="items in item_ranges" class="printableform custom" action="${href.changeset()}" method="get">
         <div class="buttons">
           <input type="hidden" name="reponame" value="$reponame" />
-          <input class="small button" type="submit" value="${_('View changes')}"
+          <input class="tiny button" type="submit" value="${_('View changes')}"
             title="Diff from Old Revision to New Revision (as selected in the Diff column)" />
         </div>
         <table class="listing chglist${' trac-graph' if graph else None}">
@@ -210,7 +210,7 @@
         </table>
 
         <div py:if="len(items) &gt; 10 and len(item_ranges) == 1" class="buttons">
-          <input class="small button" type="submit" value="${_('View changes')}"
+          <input class="tiny button" type="submit" value="${_('View changes')}"
             title="Diff from Old Revision to New Revision (as selected in the Diff column)" />
         </div>
       </form>

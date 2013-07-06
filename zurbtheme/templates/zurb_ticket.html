@@ -164,7 +164,7 @@
             </form>
           </div>
 
-          <h3 class="foldable">Change History <span class="trac-count">(${len(changes)})</span></h3>
+          <h3 style="margin-left: 0px;" class="foldable row">Change History <span class="trac-count">(${len(changes)})</span></h3>
 
           <div id="changelog">
             <py:for each="change in changes">
@@ -215,7 +215,7 @@ ${comment}</textarea>
                   <py:when test="ticket.exists">Change Properties</py:when>
                   <py:otherwise>Properties</py:otherwise>
               </legend>
-              <table>
+              <table class="large-12">
                 <tr py:if="can_modify or can_create">
                   <th><label for="field-summary">Summary:</label></th>
                   <td class="fullrow" colspan="3">
@@ -354,7 +354,7 @@ ${value}</textarea>
         </div>
 
         <!--! Author or Reporter -->
-        <div py:if="authname == 'anonymous'" class="field">
+        <div py:if="authname == 'anonymous'" class="field large-5">
           <fieldset py:choose="" class="panel">
             <legend py:when="ticket.exists">Author</legend>
             <legend py:otherwise="">Reporter</legend>
@@ -393,8 +393,8 @@ ${value}</textarea>
             <input type="hidden" name="view_time" value="${to_utimestamp(ticket['changetime'])}" />
             <input type="hidden" name="replyto" value="${replyto}" />
           </py:if>
-          <input class="small button" type="submit" name="preview" value="${_('Preview')}" accesskey="r" />&nbsp;
-          <input class="small button" type="submit" name="submit" value="${_('Submit changes') if ticket.exists else _('Create ticket')}" />
+          <input class="tiny button" type="submit" name="preview" value="${_('Preview')}" accesskey="r" />&nbsp;
+          <input class="tiny button" type="submit" name="submit" value="${_('Submit changes') if ticket.exists else _('Create ticket')}" />
         </div>
 
       </form>

@@ -21,7 +21,7 @@
         <div class="buttons">
           <input type="hidden" name="action" value="${diff_action or 'diff'}" />
           <input py:for="k, v in diff_args or []" type="hidden" name="$k" value="$v"/>
-          <input class="small button" type="submit" value="${_('View changes')}" />
+          <input class="tiny button" type="submit" value="${_('View changes')}" />
         </div>
         <table id="fieldhist" class="listing" summary="Change history">
           <thead>

@@ -21,9 +21,9 @@
         <span py:if="numrows" class="numrows">(${ngettext('%(num)s match', '%(num)s matches', numrows)})</span>
       </h1>
 
-      <form method="get" action="" class="custom columns large-4 small-8">
+      <form method="get" action="" class="custom large-12 small-8">
         <div id="prefs">
-          <div>
+          <div class="large-2">
             <label>
               Max items per page
               <input type="text" name="max" size="10" value="${max}" />
@@ -45,8 +45,8 @@
               </table>
             </fieldset>
           </div>
-          <div class="buttons">
-            <input class="small button" type="submit" value="${_('Update')}" />
+          <div class="large-2">
+            <input style="margin-top: 10px;" class="tiny button" type="submit" value="${_('Update')}" />
           </div>
         </div>
       </form>
@@ -59,19 +59,19 @@
         <form py:if="'REPORT_MODIFY' in perm(report.resource)" action="" method="get" class="custom">
           <div>
             <input type="hidden" name="action" value="edit" />
-            <input class="small button" type="submit" value="${_('Edit report')}" accesskey="e" />
+            <input class="tiny button" type="submit" value="${_('Edit report')}" accesskey="e" />
           </div>
         </form>
         <form py:if="'REPORT_CREATE' in perm(report.resource)" action="" method="get" class="custom">
           <div>
             <input type="hidden" name="action" value="copy" />
-            <input class="small button" type="submit" value="${_('Copy report')}" />
+            <input class="tiny button" type="submit" value="${_('Copy report')}" />
           </div>
         </form>
         <form py:if="'REPORT_DELETE' in perm(report.resource)" action="" method="get" class="custom">
           <div>
             <input type="hidden" name="action" value="delete" />
-            <input class="small button" type="submit" value="${_('Delete report')}" />
+            <input class="tiny button" type="submit" value="${_('Delete report')}" />
           </div>
         </form>
       </div>
@@ -207,7 +207,7 @@
       <div py:if="message" class="system-message">$message</div>
       <div py:if="numrows == 0" id="report-notfound">No matches found.</div>
 
-      <div id="help" i18n:msg="">
+      <div class="large-12" id="help" i18n:msg="">
        <span class="radius secondary label">Note:</span>
         See <a href="${href.wiki('TracReports')}">TracReports</a> for help on using and creating reports.
       </div>
