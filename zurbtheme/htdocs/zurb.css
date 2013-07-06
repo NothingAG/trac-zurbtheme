@@ -16,6 +16,9 @@ h4{
     font-size: 1.15em !important;
 }
 
+#results dt *:link, #results dt *:visited{
+    padding: 0px 0px 0px 0px;
+}
 
 .buttons form, .buttons form div {
     display: inline;
@@ -773,7 +776,7 @@ pre {
     margin-left: -10px;
 }
 
-#ticket {
+.ticket #ticket {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -1059,6 +1062,7 @@ table.listing th.sel, table.listing td.sel {
 
 .metanav span{
     margin-left: 5px;
+    margin-top: 10px;
 }
 
 form #search{
@@ -1837,5 +1841,12 @@ blockquote.citation {
 
 #changelog .change{
     margin-bottom: 15px;
+}
+
+.timeline dd{
+    color: #777766;
+    font-size: 80%;
+    margin: 0px 0px 0.75em 4.8em;
+    padding: 0px;
 }
 /* @end */

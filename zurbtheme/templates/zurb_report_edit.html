@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div id="content" class="report">
+    <div id="content" class="report columns">
 
       <h1>${_('New Report') if action == 'new' else report.title}</h1>
       <form action="${href.report(report.id)}" method="post" id="edit_report" class="custom">
