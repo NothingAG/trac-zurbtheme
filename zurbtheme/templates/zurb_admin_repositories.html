@@ -80,8 +80,8 @@ $info.description</textarea>
             </fieldset>
           </div>
           <div class="buttons">
-            <input class="small button" type="submit" name="cancel" value="${_('Cancel')}"/>
-            <input class="small button" py:if="info.editable" type="submit" name="save" value="${_('Save')}"/>
+            <input class="tiny button" type="submit" name="cancel" value="${_('Cancel')}"/>
+            <input class="tiny button" py:if="info.editable" type="submit" name="save" value="${_('Save')}"/>
           </div>
         </fieldset>
       </form>
@@ -98,7 +98,7 @@ $info.description</textarea>
               <label>Directory: <input type="text" name="dir"/></label>
             </div>
             <div class="buttons">
-              <input class="small button" type="submit" name="add_repos" value="${_('Add')}"/>
+              <input class="tiny button" type="submit" name="add_repos" value="${_('Add')}"/>
             </div>
           </fieldset>
         </form>
@@ -112,7 +112,7 @@ $info.description</textarea>
             </div>
             ${alias_field(True)}
             <div class="buttons">
-              <input class="small button" type="submit" name="add_alias" value="${_('Add')}"/>
+              <input class="tiny button" type="submit" name="add_alias" value="${_('Add')}"/>
             </div>
           </fieldset>
         </form>
@@ -140,8 +140,8 @@ $info.description</textarea>
             </tbody>
           </table>
           <div class="buttons">
-            <input class="small button" type="submit" name="refresh" value="${_('Refresh')}"/>
-            <input class="small button" type="submit" name="remove" value="${_('Remove selected items')}"/>
+            <input class="tiny button" type="submit" name="refresh" value="${_('Refresh')}"/>
+            <input class="tiny button" type="submit" name="remove" value="${_('Remove selected items')}"/>
           </div>
         </form>
       </py:otherwise>

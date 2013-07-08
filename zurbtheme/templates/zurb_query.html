@@ -62,7 +62,7 @@
                         class="${field_name}" py:if="multiline or constraint_idx == 0">
                       <td>
                         <div class="inlinebuttons">
-                          <input class="small button" type="submit" name="rm_filter_${n_field_name}_${constraint_idx}" value="&ndash;" />
+                          <input class="tiny button" type="submit" name="rm_filter_${n_field_name}_${constraint_idx}" value="&ndash;" />
                         </div>
                       </td>
                       <py:choose test="constraint_idx">
@@ -148,7 +148,7 @@
                                                len(constraints[field_name])) or None}">${field.label}</option>
                         </select>
                         <div class="inlinebuttons">
-                          <input class="small button" type="submit" name="add_${clause_num}" value="+" />
+                          <input class="tiny button" type="submit" name="add_${clause_num}" value="+" />
                         </div>
                       </td>
                       <td py:if="last_clause" class="or" colspan="2">
@@ -158,7 +158,7 @@
                           <option py:for="field_name in field_names" value="$field_name">${fields[field_name].label}</option>
                         </select>
                         <div class="inlinebuttons">
-                          <input class="small button" type="submit" name="add_${clause_num + 1}" value="+" />
+                          <input class="tiny button" type="submit" name="add_${clause_num + 1}" value="+" />
                         </div>
                       </td>
                     </tr>
@@ -229,7 +229,7 @@
                     <input py:if="report_resource" type="hidden" name="report" value="$report_resource.id" />
                     <input type="hidden" name="order" value="$query.order" />
                     <input py:if="query.desc" type="hidden" name="desc" value="1" />
-                    <input class="small button" type="submit" name="update" value="${_('Update')}" />
+                    <input class="tiny button" type="submit" name="update" value="${_('Update')}" />
                 </div>
            </div>
 
@@ -253,7 +253,7 @@
         <form py:if="edit" method="get" action="${url_of(report_resource)}" class="custom">
           <div>
             <input type="hidden" name="action" value="edit" />
-            <input class="small button"  type="submit"
+            <input class="tiny button"  type="submit"
                    title="${_('Edit report {%(id)s} corresponding to this query', id=report_resource.id)}"
                    value="${_('Edit query')}" />
           </div>
@@ -262,7 +262,7 @@
           <div>
             <input type="hidden" name="action" value="${'edit' if edit else 'new'}" />
             <input type="hidden" name="query" value="${query.to_string()}" />
-            <input class="small button"  type="submit" value="${_('Save query')}"
+            <input class="tiny button"  type="submit" value="${_('Save query')}"
                    title="${_('Save updated query in report {%(id)s}', id=report_resource.id) if edit
                             else _('Create new report from current query')}" />
           </div>
@@ -270,7 +270,7 @@
         <form py:if="delete" method="get" action="${url_of(report_resource)}" class="custom">
           <div>
             <input type="hidden" name="action" value="delete" />
-            <input class="small button"  type="submit"
+            <input class="tiny button"  type="submit"
                    title="${_('Delete report {%(id)s} corresponding to this query', id=report_resource.id)}"
                    value="${_('Delete query')}" />
           </div>

@@ -11,7 +11,7 @@
   </head>
 
   <body>
-    <div id="content" class="report">
+    <div id="content" class="report columns">
 
       <h1>${_('New Report') if action == 'new' else report.title}</h1>
       <form action="${href.report(report.id)}" method="post" id="edit_report" class="custom">
@@ -40,8 +40,8 @@ $report.description</textarea>
 $report.sql</textarea>
           </div>
           <div class="buttons">
-            <input class="small button" type="submit" value="${_('Save report')}"/>
-            <input class="small button" type="submit" name="cancel" value="${_('Cancel')}"/>
+            <input class="tiny button" type="submit" value="${_('Save report')}"/>
+            <input class="tiny button" type="submit" name="cancel" value="${_('Cancel')}"/>
           </div>
         </div>
       </form>

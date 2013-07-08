@@ -102,7 +102,7 @@ Arguments:
           id="addreply" method="get" action="#comment" class="custom">
       <div class="inlinebuttons">
         <input type="hidden" name="replyto" value="description" />
-        <input type="submit" name="reply" value="${captioned_button('↳', _('Reply'))}" title="Reply, quoting this description" />
+        <input type="submit" class="tiny button" name="reply" value="${captioned_button('↳', _('Reply'))}" title="Reply, quoting this description" />
       </div>
     </form>
     <div py:if="ticket.description" class="searchable" xml:space="preserve">

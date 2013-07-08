@@ -68,7 +68,7 @@
           </label>
         </div>
         <div class="buttons">
-          <input class="small button" type="submit" name="install" value="${_('Install')}"
+          <input class="tiny button" type="submit" name="install" value="${_('Install')}"
                  disabled="${readonly or None}" />
         </div>
         <p class="help" py:choose="readonly">
@@ -90,7 +90,7 @@
         <div class="uninstall buttons">
           <input type="hidden" name="plugin_filename"
                  value="${plugin.plugin_filename}" />
-          <input class="small button" type="submit" name="uninstall" value="${_('Uninstall')}"
+          <input class="tiny button" type="submit" name="uninstall" value="${_('Uninstall')}"
                  disabled="${plugin.readonly or None}" />
         </div> -->
         <py:if test="plugin.info">
@@ -180,7 +180,7 @@
         </table>
         <div class="buttons">
           <input type="hidden" name="plugin" value="$idx" />
-          <input class="small button" type="submit" name="update" value="${_('Apply changes')}" />
+          <input class="tiny button" type="submit" name="update" value="${_('Apply changes')}" />
         </div>
       </div>
     </form>

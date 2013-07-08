@@ -25,17 +25,19 @@
     <div class="">
      <div class="large-12">
       <h1><label for="q">Search</label></h1>
-      <form id="fullsearch" action="${href.search()}" method="get" class="custom">
+      <form id="fullsearch" action="${href.search()}" method="get" class="">
         <p>
           <input type="text" id="q" name="q" size="40" value="${query}" />
           <input type="hidden" name="noquickjump" value="1" />
-          <input class="small button" type="submit" value="${_('Search')}" />
+          <input class="tiny button" type="submit" value="${_('Search')}" />
         </p>
-        <p class="filters">
+        <p class="filters large-12 small-12 row">
           <py:for each="filter in filters">
-            <input type="checkbox" id="${filter.name}" name="${filter.name}"
-                   checked="${filter.active or None}" />
-            <label for="${filter.name}">${filter.label}</label>
+            <div class="large-2 columns">
+                <input type="checkbox" id="${filter.name}" name="${filter.name}"
+                       checked="${filter.active or None}" />
+                <label for="${filter.name}">${filter.label}</label>
+            </div>
           </py:for>
        </p>
       </form>
@@ -65,12 +67,12 @@
         </div>
         <xi:include py:with="paginator = results" href="page_index.html" />
       </py:if>
-
-      <div id="notfound" py:if="query and not (results or quickjump)">
-        No matches found.
+      <div class="large-12 columns" id="help" i18n:msg="">
+          <div id="notfound" py:if="query and not (results or quickjump)">
+            No matches found.
+          </div>
       </div>
-
-      <div id="help" i18n:msg="">
+      <div class="large-12 columns" style="margin-top: 20px;" id="help" i18n:msg="">
         <span class="radius secondary label">Note:</span> See <a href="${href.wiki('TracSearch')}">TracSearch</a>
         for help on searching.
       </div>

@@ -86,13 +86,13 @@
                                 <py:choose>
                                     <py:when test="is_not_latest">
                                         <input type="hidden" name="version" value="${page.version}"/>
-                                        <input class="small button" type="submit" value="${_('Revert to this version')}"/>
+                                        <input class="tiny button" type="submit" value="${_('Revert to this version')}"/>
                                     </py:when>
                                     <py:when test="page.exists">
-                                        <input class="small button" type="submit" value="${_('Edit this page')}" accesskey="e" />
+                                        <input class="tiny button" type="submit" value="${_('Edit this page')}" accesskey="e" />
                                     </py:when>
                                     <py:otherwise>
-                                        <input class="small button" type="submit" value="${_('Create this page')}" accesskey="e" />
+                                        <input class="tiny button" type="submit" value="${_('Create this page')}" accesskey="e" />
                                         <div py:if="templates" id="template">
                                             <label for="template">Using the template:</label>
                                             <select name="template">
@@ -113,17 +113,17 @@
                     <form method="get" action="${href.wiki(page.name)}" id="rename" py:if="page.exists and rename_perm">
                         <div>
                             <input type="hidden" name="action" value="rename" />
-                            <input class="small button" type="submit" value="${_('Rename page')}" />
+                            <input class="tiny button" type="submit" value="${_('Rename page')}" />
                         </div>
                     </form>
                     <form method="get" action="${href.wiki(page.name)}" py:if="page.exists and delete_perm">
                         <div id="delete">
-                            <input class="small button" type="hidden" name="action" value="delete" />
-                            <input class="small button" type="hidden" name="version" value="$page.version" />
+                            <input class="tiny button" type="hidden" name="action" value="delete" />
+                            <input class="tiny button" type="hidden" name="version" value="$page.version" />
                             <py:if test="page.version == latest_version">
-                                <input class="small button" type="submit" name="delete_version" value="${_('Delete this version')}" />
+                                <input class="tiny button" type="submit" name="delete_version" value="${_('Delete this version')}" />
                             </py:if>
-                            <input class="small button" type="submit" value="${_('Delete page')}" />
+                            <input class="tiny button" type="submit" value="${_('Delete page')}" />
                         </div>
                     </form>
                 </div>

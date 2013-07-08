@@ -58,12 +58,12 @@ Arguments:
     </py:choose>
     <span py:if="preview or show_editor" class="trac-loading"/>
   </h3>
-  <div py:if="show_buttons" class="trac-ticket-buttons large-1 right pull-1">
+  <div py:if="show_buttons" class="trac-ticket-buttons large-1 right">
     <div class="large-1 small-5 columns">
         <form py:if="'cnum' in change and can_edit_comment" method="get" action="#comment:${cnum}" class="custom">
           <div class="inlinebuttons">
             <input type="hidden" name="cnum_edit" value="${cnum}"/>
-            <input class="tiny button"  type="submit" value="${captioned_button('✎', _('Edit'))}" title="${_('Edit comment %(cnum)s', cnum=cnum)}" />
+            <input class="tiny button secondary"  type="submit" value="${captioned_button('✎', _('Edit'))}" title="${_('Edit comment %(cnum)s', cnum=cnum)}" />
           </div>
         </form>
     </div>
@@ -72,7 +72,7 @@ Arguments:
               method="get" action="#comment">
           <div class="inlinebuttons">
             <input type="hidden" name="replyto" value="${cnum}"/>
-            <input class="tiny button"  type="submit" value="${captioned_button('↳', _('Reply'))}" title="${_('Reply to comment %(cnum)s', cnum=cnum)}" />
+            <input class="tiny button secondary"  type="submit" value="${captioned_button('↳', _('Reply'))}" title="${_('Reply to comment %(cnum)s', cnum=cnum)}" />
           </div>
         </form>
     </div>
@@ -100,7 +100,7 @@ Arguments:
         </i18n:msg></py:otherwise>
         <py:if test="preview and field.by == 'user'">
           (<button py:with="old = ticket.get_default(field_name) if field.old is empty else field.old"
-                   type="submit" name="revert_$field_name" class="small button trac-revert"
+                   type="submit" name="revert_$field_name" class="tiny button trac-revert"
                    title="Revert this change">revert<div id="revert-$field_name">${
             '0' if 'cc_update' in field else old}</div></button>)
         </py:if>
@@ -115,11 +115,11 @@ ${edited_comment if edited_comment is not None else change.comment}</textarea>
       <input type="hidden" name="cnum_edit" value="${cnum}"/>
     </div>
     <div class="buttons">
-      <input class="small button" type="submit" name="preview_comment" value="${_('Preview')}"
+      <input class="tiny button" type="submit" name="preview_comment" value="${_('Preview')}"
              title="${_('Preview changes to comment %(cnum)s', cnum=cnum)}"/>
-      <input class="small button" type="submit" name="edit_comment" value="${_('Submit changes')}"
+      <input class="tiny button" type="submit" name="edit_comment" value="${_('Submit changes')}"
              title="${_('Submit changes to comment %(cnum)s', cnum=cnum)}"/>
-      <input class="small button" type="submit" name="cancel_comment" value="${_('Cancel')}"
+      <input class="tiny button" type="submit" name="cancel_comment" value="${_('Cancel')}"
              title="Cancel comment edit"/>
     </div>
   </form>

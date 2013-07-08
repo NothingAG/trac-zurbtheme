@@ -29,7 +29,7 @@
 
       <h1>Available Reports</h1>
 
-      <form id="prefs" method="get" action="" class="panel">
+      <form id="prefs" method="get" action="" class="right">
         <div>
           <label for="trac-toggle-description">
           <input id="trac-toggle-description" type="checkbox" />
@@ -45,7 +45,7 @@
             <div class="inlinebuttons">
 
               <input type="hidden" name="action" value="clear" />
-              <input type="submit" value="${captioned_button('x', _('Clear'))}" title="Forget last query" class="trac-delete small button" />
+              <input type="submit" value="${captioned_button('x', _('Clear'))}" title="Forget last query" class="trac-delete tiny button" />
             </div>
           </form>
           <h3><a href="$saved_query_href"><em>Return to Last Query</em></a></h3>
@@ -65,7 +65,8 @@
         </div>
 
         <py:when test="reports">
-          <h2>SQL reports and saved custom queries
+          <p>
+          <h2 style="margin-left: -15px;">SQL reports and saved custom queries
             <span id="trac-sort-order" py:with="report_asc = asc if sort == 'report' else None;
                                                 title_asc = asc if sort == 'title' else None">
               Sort by:
@@ -77,19 +78,20 @@
                 Title</a>
             </span>
           </h2>
+          </p>
 
           <div py:for="id, title, description, can_edit, can_delete in reports">
             <form py:if="can_delete" method="get" action="${href.report(id)}" class="custom">
               <div class="inlinebuttons">
                 <input type="hidden" name="action" value="delete" />
                 <input type="submit" value="${captioned_button('–', _('Delete'))}"
-                     title="Delete report" class="trac-delete small button" />
+                     title="Delete report" class="trac-delete tiny button" />
               </div>
             </form>
             <form py:if="can_edit" method="get" action="${href.report(id)}" class="custom">
               <div class="inlinebuttons">
                 <input type="hidden" name="action" value="edit" />
-                <input class="small button" type="submit" value="${captioned_button('+', _('Edit'))}"
+                <input class="tiny button" type="submit" value="${captioned_button('+', _('Edit'))}"
                      title="Edit report" />
               </div>
             </form>
@@ -108,10 +110,10 @@
 
 
       <div py:if="'REPORT_CREATE' in perm" class="buttons">
-        <form action="" method="get" id="create_report" class="custom">
+        <form action="" method="get" id="create_report" class="custom row">
           <div>
             <input type="hidden" name="action" value="new" />
-            <input class="small button" type="submit" value="${_('Create new report')}" />
+            <input class="tiny button" type="submit" value="${_('Create new report')}" />
           </div>
         </form>
       </div>
