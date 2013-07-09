@@ -326,10 +326,15 @@ ${value}</textarea>
                                 <input type="radio" id="action_$key" name="action" value="$key"
                                 checked="${key == action or None}" />
                             </div>
-                            <div class="large-3 columns">
-                                <label for="action_$key">$label $controls</label>
+                            <div class="large-5">
+                                <div class="large-2 columns">
+                                    <label for="action_$key">$label</label>
+                                </div>
+                                <div class="large-5 left columns">
+                                    $controls
+                                </div>
                             </div>
-                            <div class="left columns row">
+                            <div class="left">
                                 <span class="hint radius secondary label" py:for="hint in hints">$hint</span>
                             </div>
                       </div>
