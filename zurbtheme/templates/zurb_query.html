@@ -18,14 +18,14 @@
         $("#group").change(function() {
           $("#groupdesc").enable(this.selectedIndex != 0)
         }).change();
-        $("fieldset legend.foldable").enableFolding(false);
+        $("fieldset legend.foldable").enableFolding(true);
       /*<![CDATA[*/
         /* Hide the filters for saved queries. */
         if (window.location.href.search(/[?&]report=[0-9]+/) != -1)
           $("#filters").toggleClass("collapsed");
       /*]]>*/
         /* Hide the columns by default. */
-        $("#columns").toggleClass("collapsed");
+        //$("#columns").toggleClass("collapsed");
       });
     </script>
   </head>

@@ -8,6 +8,19 @@
   <xi:include href="layout.html" />
   <head>
     <title>Roadmap</title>
+      <script type="text/javascript" src="${chrome.htdocs_location}js/folding.js"></script>
+      <script type="text/javascript">
+          jQuery(document).ready(function($) {
+              $("fieldset legend.foldable").enableFolding(true);
+              /*<![CDATA[*/
+              /* Hide the filters for saved queries. */
+              if (window.location.href.search(/[?&]report=[0-9]+/) != -1)
+                  $("#filters").toggleClass("collapsed");
+              /*]]>*/
+              /* Hide the columns by default. */
+              $("#columns").toggleClass("collapsed");
+          });
+      </script>
   </head>
 
   <body>
@@ -15,7 +28,7 @@
 
       <form id="prefs" method="get" action="" class="custom">
        <fieldset class="panel">
-           <legend>Filters</legend>
+           <legend class="foldable">Filters</legend>
         <div>
           <label for="showcompleted">
           <input type="checkbox" id="showcompleted" name="show" value="completed"

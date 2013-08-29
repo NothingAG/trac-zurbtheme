@@ -471,7 +471,7 @@ dt *:link, dt *:visited {
     border-top-color: -moz-use-text-color;
     border-top-style: none;
     border-top-width: medium;
-    color: #000000;
+    color: #2ba6cb;
     padding-bottom: 2px;
     padding-left: 22px;
     padding-right: 4px;
@@ -783,13 +783,13 @@ pre {
     -moz-border-top-colors: none;
     background-attachment: scroll;
     background-clip: border-box;
-    background-color: #FFFFDD;
+    background-color: #DCF7F8;
     background-image: none;
     background-origin: padding-box;
     background-position: 0 0;
     background-repeat: repeat;
     background-size: auto auto;
-    border-bottom-color: #DDDD99;
+    border-bottom-color: #B1D1D2;
     border-bottom-left-radius: 0.4em;
     border-bottom-right-radius: 0.4em;
     border-bottom-style: solid;
@@ -801,23 +801,23 @@ pre {
     border-image-width: 1 1 1 1;
     border-left-color-ltr-source: physical;
     border-left-color-rtl-source: physical;
-    border-left-color-value: #DDDD99;
+    border-left-color: #B1D1D2;
     border-left-style-ltr-source: physical;
     border-left-style-rtl-source: physical;
-    border-left-style-value: solid;
+    border-left-style: solid;
     border-left-width-ltr-source: physical;
     border-left-width-rtl-source: physical;
-    border-left-width-value: 1px;
+    border-left-width: 1px;
     border-right-color-ltr-source: physical;
     border-right-color-rtl-source: physical;
-    border-right-color-value: #DDDD99;
+    border-right-color: #B1D1D2;
     border-right-style-ltr-source: physical;
     border-right-style-rtl-source: physical;
-    border-right-style-value: solid;
+    border-right-style: solid;
     border-right-width-ltr-source: physical;
     border-right-width-rtl-source: physical;
-    border-right-width-value: 1px;
-    border-top-color: #DDDD99;
+    border-right-width: 1px;
+    border-top-color: #B1D1D2;
     border-top-left-radius: 0.4em;
     border-top-right-radius: 0.4em;
     border-top-style: solid;
@@ -828,6 +828,10 @@ pre {
     padding-right: 1em;
     padding-top: 0.5em;
     position: relative;
+}
+
+.ticket #ticket .panel{
+    border-color: #B1D1D2 !important;
 }
 
 .trac-loading {
@@ -1848,5 +1852,17 @@ blockquote.citation {
     font-size: 80%;
     margin: 0px 0px 0.75em 4.8em;
     padding: 0px;
+}
+
+
+a.trac-rawlink, a.trac-ziplink {
+    background: url(../common/download.png) no-repeat scroll right center transparent;
+    border-bottom: medium none;
+    padding-right: 16px;
+}
+
+#attachments dt {
+    display: list-item;
+    list-style: square outside none;
 }
 /* @end */
