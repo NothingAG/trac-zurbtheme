@@ -1866,3 +1866,19 @@ a.trac-rawlink, a.trac-ziplink {
     list-style: square outside none;
 }
 /* @end */
+
+input[type="file"]{
+    -moz-box-sizing: border-box;
+    -moz-transition: -moz-box-shadow 0.45s ease 0s, border-color 0.45s ease-in-out 0s;
+    background-color: white;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    color: rgba(0, 0, 0, 0.75);
+    display: block;
+    font-family: inherit;
+    font-size: 0.875em;
+    height: 2.3125em;
+    margin: 0 0 1em;
+    padding: 0.5em;
+    width: 100%;
+}
