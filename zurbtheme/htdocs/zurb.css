@@ -1882,3 +1882,8 @@ input[type="file"]{
     padding: 0.5em;
     width: 100%;
 }
+
+#accountlist .custom.checkbox.checked:before {
+    margin-left: 0 !important;
+    margin-top: -2px !important;
+}

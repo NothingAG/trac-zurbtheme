@@ -114,12 +114,18 @@ class ZurbTheme(ThemeBase):
 
         # Account manager plugin
         'login.html' : ('zurb_login.html', None),
-        'prefs_um_profile.html' : ('zurb_prefs_um_profile.html', None),
         'reset_password.html' : ('zurb_reset_password.html', None),
         'register.html' : ('zurb_register.html', None),
+        'verify_email.html' : ('zurb_verify_email.html', None),
         'prefs_account.html' : ('zurb_prefs_account.html', None),
+        # Account manager plugin Admin
+        'admin_accountsnotification.html' : ('zurb_admin_accountsnotification.html', None),
+        'admin_accountsconfig.html' : ('zurb_admin_accountsconfig.html', None),
+        'admin_users.html' : ('zurb_admin_users.html', None),
+        'account_details.html' : ('zurb_account_details.html', None),
 
-        }
+        'prefs_um_profile.html' : ('zurb_prefs_um_profile.html', None),
+    }
 
     Chrome.default_html_doctype = DocType.HTML5
 

@@ -1,0 +1,105 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="zurb_admin.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+<head>
+    <title>Accounts</title>
+</head>
+
+<body>
+<h2>Manage User Accounts</h2>
+
+<form id="account-editor" class="addnew custom" method="post">
+    <fieldset class="panel large-6 small-12">
+        <div class="system-message" py:if="editor_error">
+            <p>${editor_error}</p>
+        </div>
+        <div class="notice system-message" py:if="success">
+            <p i18n:msg="success">
+                Successfully updated: ${', '.join(success)}
+            </p>
+        </div>
+
+        <legend>Add/Edit Account:</legend>
+        <div class="field large-12 small-12">
+            <label>Username:<br />
+                <input type="text" name="username" id="username"
+                       class="textwidget" value="${acctmgr.username}" /></label>
+            <p class="hint" py:if="ignore_auth_case">
+                Only lowercase usernames allowed
+            </p>
+        </div>
+        <div class="field large-12 small-12">
+            <label py:choose="">Password:<br />
+                <input type="password" name="password" class="textwidget"
+                       py:when="create_enabled or password_change_enabled" />
+                <input type="password" name="password" class="textwidget"
+                       py:otherwise="" disabled="disabled" />
+            </label>
+        </div>
+        <div class="field large-12 small-12">
+            <label py:choose="">Confirm Password:<br />
+                <input type="password" name="password_confirm" class="textwidget"
+                       py:when="create_enabled or password_change_enabled" />
+                <input type="password" name="password_confirm" class="textwidget"
+                       py:otherwise="" disabled="disabled" />
+            </label>
+        </div>
+        <div class="field large-12 small-12">
+            <label>Pre-/Surname (Nickname):<br />
+                <input type="text" name="name" class="textwidget"
+                       value="${acctmgr.name}" /></label>
+        </div>
+        <div class="field large-12 small-12">
+            <label>Email Address:<br />
+                <input type="text" name="email" class="textwidget"
+                       value="${acctmgr.email}" /></label><br />
+            <label py:if="verify_enabled">
+                <input type="checkbox" name="email_approved" value="true"
+                       checked="${email_approved and 'checked' or None}" />
+                Skip new email verification</label>
+        </div>
+        <p class="help">Add a new user account or edit an existing one.</p>
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="add"
+                   py:if="create_enabled"
+                   value="${dgettext('acct_mgr', ' Add ')}" />
+            <input class="tiny button" type="submit" name="change"
+                   value="${dgettext('acct_mgr', ' Change ')}" />
+        </div>
+    </fieldset>
+</form>
+
+<py:choose>
+    <div class="system-message"
+         py:when="not listing_enabled">
+        <p>This password store does not support listing users.</p>
+    </div>
+    <form class="custom" method="post" py:otherwise="" py:strip="not delete_enabled">
+        <div class="system-message"
+             py:if="deletion_error"><p>${deletion_error}</p></div>
+        <xi:include href="user_table.html"/>
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="reset"
+                   py:if="password_reset_enabled"
+                   title="Send another random password"
+                   value="${dgettext('acct_mgr', 'Reset passwords')}" />
+            <input class="tiny button" type="submit" name="remove"
+                   py:if="delete_enabled"
+                   value="${dgettext('acct_mgr', 'Remove selected accounts')}" />
+            <input class="tiny button" type="submit" name="cleanup"
+                   py:if="req.perm.has_permission('ACCTMGR_ADMIN')"
+                   value="${dgettext('acct_mgr', 'Review account attributes')}" />
+        </div>
+    </form>
+</py:choose>
+</body>
+</html>

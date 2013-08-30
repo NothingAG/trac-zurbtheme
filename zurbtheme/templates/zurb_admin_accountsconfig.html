@@ -1,0 +1,110 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="zurb_admin.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+<head>
+    <title>Accounts: Configuration</title>
+</head>
+
+<body>
+<h2>Accounts: Configuration</h2>
+
+<div class="notice system-message" py:if="result">
+    <p>${result}</p>
+</div>
+<form id="accountsconfig" class="mod custom" method="post">
+    <fieldset py:for="section in sections" class="panel">
+        <legend>
+            <label>
+                <select name="${section.classname}" >
+                    <option py:for="order in numstores" value="${order}"
+                            selected="${order == section.order or None}">
+                        ${order == 0 and '--' or order}
+                    </option>
+                </select>
+                $section.name
+            </label>
+        </legend>
+
+        <div class="field large-8 small-12" py:for="option in section.options">
+            <label>$option.label:
+                <py:choose>
+                    <div class="system-message"
+                         py:when="isinstance(option.value, dict) and
+                            'error' in option.value.keys()" >
+                        <p>${option.value['error']}</p>
+                    </div>
+                    <select name="$option.name"
+                            py:when="isinstance(option.value, dict)" >
+                        <option py:for="opt in option.value['options']"
+                                value="${opt}" class="textwidget"
+                                selected="${opt == option.value['selected'] or None}">
+                            ${opt}
+                        </option>
+                    </select>
+                    <input class="textwidget" py:otherwise=""
+                           type="text" name="$option.name" value="$option.value" />
+                </py:choose>
+            </label>
+            <p class="help" py:if="option.doc">$option.doc</p>
+        </div>
+    </fieldset>
+
+    <fieldset class="panel">
+        <legend>Password Refresh</legend>
+        <label>
+            <input type="checkbox" name="refresh_passwd" value="true"
+                   checked="${refresh_passwd and 'checked' or None}" />
+            Silently update password hashes on next successful login.</label>
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="restart"
+                   value="${dgettext('acct_mgr', 'Restart')}" />
+        </div>
+    </fieldset>
+
+    <fieldset class="panel">
+        <legend>Persistent Sessions</legend>
+        <label>
+            <input type="checkbox" name="persistent_sessions" value="true"
+                   checked="${persistent_sessions and 'checked' or None}" />
+            Allow the user to be remembered across sessions without needing to
+            re-authenticate.
+        </label>
+        <p class="help" i18n:msg="">This is, user checks a "Remember Me"
+            <tt>checkbox</tt> and, next time he visits the site within
+            30 days, he'll be remembered and automatically authenticated.
+        </p>
+    </fieldset>
+
+    <fieldset class="panel">
+        <legend>Password Reset</legend>
+        <label>
+            <input type="checkbox" name="force_passwd_change" value="true"
+                   checked="${force_passwd_change and 'checked' or None}" />
+            Force users to change passwords after a password reset.
+        </label>
+    </fieldset>
+
+    <fieldset class="panel">
+        <legend>Verify email</legend>
+        <label>
+            <input type="checkbox" name="verify_email" value="true"
+                   checked="${verify_email and 'checked' or None}" />
+            Force users to verify their email addresses.</label>
+    </fieldset>
+
+    <div class="buttons">
+        <input class="tiny button" type="submit" name="save"
+               value="${dgettext('acct_mgr', 'Save')}" />
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="zurb_admin.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+<head>
+    <title>Accounts: Notification Configuration</title>
+</head>
+
+<body>
+<h2>Accounts: Notification Configuration</h2>
+
+<form id="accountsconfig" class="mod custom" method="post">
+    <fieldset class="panel">
+        <legend>Account Notification</legend>
+        <p>Set the following options in order to be notified of
+            account creation, password reset and account deletion.</p>
+
+        <h3>Notification Actions</h3>
+        <p class="help" i18n:msg="">This is a list of actions which you can
+            enable or disable by <em>checking</em> the <em>checkboxes</em>.</p>
+        <label>
+            <input type="checkbox" name="notify_actions" value="new"
+                   checked="${'new' in notify_actions or None}" />
+            Get notified of new account creation</label><br/>
+        <label>
+            <input type="checkbox" name="notify_actions" value="change"
+                   checked="${'change' in notify_actions or None}" />
+            Get notified of password reset</label><br/>
+        <label>
+            <input type="checkbox" name="notify_actions" value="delete"
+                   checked="${'delete' in notify_actions or None}" />
+            Get notified of account deletion</label><br/>
+
+        <h3>Notification Recipient Addresses</h3>
+        <p class="help">Space-separated list of email addresses and/or
+            usernames that get notified of the above actions:
+        </p>
+        <textarea cols="60" rows="2" id="notify_addresses"
+                  name="notify_addresses">${ ' '.join(notify_addresses)}
+        </textarea>
+    </fieldset>
+    <div class="buttons">
+        <input class="tiny button" type="submit" name="save"
+               value="${dgettext('acct_mgr', 'Save')}" />
+    </div>
+</form>
+</body>
+</html>

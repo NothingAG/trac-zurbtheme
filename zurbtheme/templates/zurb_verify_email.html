@@ -1,0 +1,50 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="layout.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+<head>
+    <title>Verify Email</title>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $('#token')[0].focus();
+        });
+    </script>
+</head>
+
+<body>
+<div id="content" class="verify_email">
+
+    <h1>Verify Email</h1>
+
+    <p class="help" i18n:msg="email">An email was sent to
+        $req.session.email with a token to verify your new address.
+        Please check your email and enter the token in the form below.</p>
+    <p i18n:msg="">You can <a href="${href.prefs()}">change your
+        email address</a>, if it is incorrect.</p>
+
+    <form method="post" action="" id="acctmgr_verify_email" class="custom">
+        <div class="large-3 small-12">
+            <label for="token">Verification Token:</label>
+            <input type="text" id="token" name="token" class="textwidget"
+                   size="10" value="${value_of('token')}" />
+        </div>
+        <div class="buttons central nav">
+            <input class="tiny button" type="submit" name="verify" py:attrs="button_state"
+                   value="${dgettext('acct_mgr', 'Verify')}" />
+            <input class="tiny button" type="submit" name="resend" py:attrs="button_state"
+                   value="${dgettext('acct_mgr', 'Resend Email')}" />
+        </div>
+    </form>
+
+</div>
+</body>
+</html>
+
