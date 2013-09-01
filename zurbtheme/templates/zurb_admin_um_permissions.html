@@ -1,0 +1,27 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      py:strip="">
+<div class="um_permissions">
+    <fieldset class="panel">
+        <legend>Advanced Permissions</legend>
+        <form method="POST" class="">
+            <div py:for="group, group_actions in groupby(sorted(actions), lambda a: '_' in a and a[:a.index('_')] or not a.isupper() and '99_group_hack' or a) "  class="um_permissions_group ${group=='99_group_hack' and 'um_permissions_group_groups' or ''}">
+                <div class="um_permissions_group_name">${group=='99_group_hack' and 'Groups' or group.capitalize()}</div>
+                <div py:for="action in group_actions"  py:if="not action in ('anonymous', 'authenticated', user_manager.user.username)">
+                    <label><input type="checkbox" name="um_permission" id="um_perrmission" value="${action}" disabled="${(not user_actions.has_key(action) and all_user_actions.has_key(action)) and 'disabled' or None}" checked="${ (all_user_actions.has_key(action) or user_actions.has_key(action) )  and 'checked' or  None}"/>
+                        ${action}<span py:if="group=='99_group_hack'" class="hint">(${', '.join([action1 for subject, action1 in permsys.get_all_permissions() if subject==action]) })</span>
+                    </label>
+                </div>
+            </div>
+            <p class="hint" style="clear:both">Disabled permissions are inhereted.</p>
+            <div class="um_permissions_actions">
+                <input class="tiny button" type="submit" name="um_permissions_update" value="Update Permissions"/>
+            </div>
+        </form>
+    </fieldset>
+</div>
+</html>

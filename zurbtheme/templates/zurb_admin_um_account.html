@@ -1,0 +1,26 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/"
+      py:strip="">
+<div class="um_account">
+    <fieldset py:if="um_account.type=='trac-managed'" class="panel">
+        <legend>Change password</legend>
+        <form method="post">
+            <div class="large-8 small-12">
+                <label for="um_account_new_password">New Password:</label>
+                <input type="password" id="um_account_new_password" name="um_account_new_password"/>
+            </div>
+            <div class="large-8 small-12">
+                <label for="um_account_retype_password">Confirm Password:</label>
+                <input type="password" id="um_account_confirm_password" name="um_account_confirm_password"/>
+            </div>
+            <div class="um_account_actions">
+                <input class="tiny button" type="submit" name="um_account_change_password" value="Change Password"/>
+            </div>
+        </form>
+    </fieldset>
+</div>
+</html>

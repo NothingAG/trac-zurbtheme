@@ -1887,3 +1887,7 @@ input[type="file"]{
     margin-left: 0 !important;
     margin-top: -2px !important;
 }
+
+img.userpictures_avatar {
+    box-shadow: 0px 0px 0px #444444 !important;
+}
