@@ -114,7 +114,21 @@ class ZurbTheme(ThemeBase):
 
         # Account manager plugin
         'login.html' : ('zurb_login.html', None),
-        }
+        'reset_password.html' : ('zurb_reset_password.html', None),
+        'register.html' : ('zurb_register.html', None),
+        'verify_email.html' : ('zurb_verify_email.html', None),
+        'prefs_account.html' : ('zurb_prefs_account.html', None),
+        # Account manager plugin Admin
+        'admin_accountsnotification.html' : ('zurb_admin_accountsnotification.html', None),
+        'admin_accountsconfig.html' : ('zurb_admin_accountsconfig.html', None),
+        'admin_users.html' : ('zurb_admin_users.html', None),
+        'account_details.html' : ('zurb_account_details.html', None),
+
+        # User manager plugin
+        'prefs_um_profile.html' : ('zurb_prefs_um_profile.html', None),
+        'admin_um.html' : ('zurb_admin_um.html', None),
+        'admin_um_profile_fields.html' : ('zurb_admin_um_profile_fields.html', None),
+    }
 
     Chrome.default_html_doctype = DocType.HTML5
 
@@ -153,11 +167,22 @@ class ZurbTheme(ThemeBase):
             add_stylesheet(req, 'theme/css/zurb_browser.css')
             add_stylesheet(req, 'theme/css/zurb_milestone.css')
             add_stylesheet(req, 'theme/css/zurb_tickets.css')
+            add_stylesheet(req, 'theme/css/zurb_admin_um.css')
             add_script(req, 'theme/js/custom.modernizr.js')
             add_script(req, 'theme/js/foundation.min.js')
             #add_script(req, 'theme/js/jquery.js')
             #add_script(req, 'theme/js/zepto.js')
             #add_script(req, 'theme/js/jquery.js')
+
+        #if template is using user manager plugin...
+        if template=="admin_um.html":
+            if data['user_manager'].has_key('panel'):
+                if data['user_manager']['panel'] == "account":
+                    data['user_manager']['template'] = "zurb_admin_um_account.html"
+                elif data['user_manager']['panel'] == "permissions":
+                    data['user_manager']['template'] = "zurb_admin_um_permissions.html"
+                elif data['user_manager']['panel'] == "profile":
+                    data['user_manager']['template'] = "zurb_admin_um_profile.html"
 
         if template is None and data is None and sys.exc_info() == (None, None, None):
             return template, data, content_type

@@ -1,0 +1,80 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="zurb_prefs.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+
+<!--! FIXME [1] prevents this from matching its own output.
+      Should that really be necessary? -->
+<div py:match="div[@id='tabcontent'][1]" py:attrs="select('@*')">
+    ${select('*')}
+    <py:if test="account.delete_enabled">
+        <hr/>
+        <h2>Delete Account</h2>
+
+        <div class="system-message" py:if="account.delete_error">
+            <h2>Error</h2>
+            <p>$account.delete_error</p>
+        </div>
+
+        <form class="custom" method="post" action="" id="acctmgr_delete_account"
+              onsubmit="return confirm('${account.delete_msg_confirm}');">
+            <div class="field large-3 small-12">
+                <label>Password:
+                    <input type="password" name="password" class="textwidget"
+                           size="20" />
+                </label>
+            </div>
+            <div class="buttons">
+                <input type="hidden" name="action" value="delete" />
+                <input class="tiny button" type="submit"
+                       value="${dgettext('acct_mgr', 'Delete account')}" />
+            </div>
+        </form>
+    </py:if>
+</div>
+
+<head>
+    <title>Account</title>
+</head>
+
+<body>
+<div class="system-message" py:if="account.error">
+    <h2>Error</h2>
+    <p>$account.error</p>
+</div>
+<p py:if="account.message">$account.message</p>
+<h2>Change Password</h2>
+
+<div class="system-message" py:if="account.save_error">
+    <h2>Error</h2>
+    <p>$account.save_error</p>
+</div>
+
+<div class="field large-3 small-12">
+    <label>Old Password:
+        <input type="password" name="old_password" class="textwidget"
+               size="20" />
+    </label>
+</div>
+<div class="field large-3 small-12">
+    <label>New Password:
+        <input type="password" name="password" class="textwidget"
+               size="20" />
+    </label>
+</div>
+<div class="field large-3 small-12">
+    <label>Confirm Password:
+        <input type="password" name="password_confirm" class="textwidget"
+               size="20" />
+    </label>
+</div>
+</body>
+</html>

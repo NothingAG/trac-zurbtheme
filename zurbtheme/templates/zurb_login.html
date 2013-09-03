@@ -1,0 +1,85 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
+      i18n:domain="acct_mgr">
+<xi:include href="layout.html" />
+<?python
+    if _dgettext is not None:
+        dgettext = _dgettext ?>
+<head>
+    <title>Login</title>
+    <script type="text/javascript">
+        jQuery(document).ready(function($) {
+            $("body").addClass("login");
+            $('#user')[0].focus();
+        });
+    </script>
+</head>
+
+<body>
+<div id="content" class="login">
+
+    <h1>Login</h1>
+
+    <form method="post" id="acctmgr_loginform" action="">
+        <div>
+            <input type="hidden" name="referer" value="${referer}" />
+        </div>
+        <div class="textbox large-3 small-12">
+            <label for="user">Username:</label><br />
+            <input type="text" id="user" name="user" class="textwidget"
+                   size="20" />
+        </div>
+        <div class="textbox large-3 small-12">
+            <label for="password">Password:</label><br />
+            <input type="password" id="password" name="password"
+                   class="textwidget" size="20" />
+        </div>
+        <div id="login_options" class="central"
+             py:if="reset_password_enabled and login_opt_list != True">
+            <p class="hint">
+                <a href="${href.reset_password()}">Forgot your password?</a>
+            </p>
+        </div>
+        <div class="textbox" py:if="persistent_sessions">
+            <input type="checkbox" id="rememberme" name="rememberme"
+                   value="1" />
+            <label for="rememberme">Remember me</label>
+        </div>
+        <div id="login_options" class="buttons central nav">
+            <input class="tiny button" type="submit" value="${dgettext('acct_mgr', 'Login')}" />
+            <ul py:if="login_opt_list == True">
+                <py:choose py:if="registration_enabled">
+                    <li class="first" py:when="reset_password_enabled">
+                        <a href="${href.register()}">Register</a>
+                    </li>
+                    <li class="first last" py:otherwise="">
+                        <a href="${href.register()}">Register</a>
+                    </li>
+                </py:choose>
+                <py:choose py:if="reset_password_enabled">
+                    <li class="last" py:when="registration_enabled">
+                        <a href="${href.reset_password()}">Forgot your password?</a>
+                    </li>
+                    <li class="first last" py:otherwise="">
+                        <a href="${href.reset_password()}">Forgot your password?</a>
+                    </li>
+                </py:choose>
+            </ul>
+        </div>
+    </form>
+
+</div>
+
+<div class="central system-message" py:if="login_error">
+    <h2>Error</h2>
+    <p>${login_error}</p>
+</div>
+<div class="spacer" py:if="not login_error"></div>
+
+</body>
+</html>

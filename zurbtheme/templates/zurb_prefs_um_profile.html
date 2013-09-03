@@ -1,0 +1,64 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:py="http://genshi.edgewall.org/"
+      xmlns:xi="http://www.w3.org/2001/XInclude">
+<xi:include href="zurb_prefs.html" />
+<py:match path="form[@id='userprefs']">
+    <form py:attrs="select('@*')"
+          enctype="multipart/form-data">${select("*|text()")}</form>
+</py:match>
+<head>
+    <title>${_('My Profile')}</title>
+</head>
+<body>
+<div py:choose="" class="left">
+    <div class="um_profile_picture" style="float: left; clear: both;">
+        <img py:when="user.picture_href" src="$user.picture_href"/>
+        <img py:otherwise="" src="${href.chrome('tracusermanager')}/img/no_picture.png"/>
+    </div>
+    <input py:if="user.picture_href" style="float: left; clear:left;" class="tiny button" type="submit" name="um_profile_picture_remove" value="Remove picture"/>
+</div>
+
+<div class="um_profile_fields large-3 small-12" style="margin-bottom: 50px;">
+    <div py:choose="" py:for="field, attributes in sorted(um_profile_fields.items(), lambda x,y:x[1]['order']-y[1]['order'])" class="field">
+        <py:when test="attributes.type=='select'">
+            <label for="um_profile_${field}">${attributes.label}:</label>
+            <select name="um_profile_${field}" id="um_profile_${field}" >
+                <py:for each="value in attributes['options']">
+                    <py:choose>
+                        <option py:when="user[field]==value" selected="selected" value="${value}" >${value}</option>
+                        <option py:otherwise="" value="${value}">${value}</option>
+                    </py:choose>
+                </py:for>
+            </select>
+        </py:when>
+        <py:when test="attributes.type=='file'">
+            <label for="um_profile_${field}">${attributes.label}:</label>
+            <input type="file" name="um_profile_${field}" id="um_profile_${field}" />
+        </py:when>
+        <py:when test="attributes.type=='textarea'">
+            <label for="um_profile_${field}">${attributes.label}:</label>
+            <textarea name="um_profile_${field}" id="um_profile_${field}" cols="${attributes.cols}" rows="${attributes.rows}">${user[field]}</textarea>
+        </py:when>
+        <py:when test="attributes.type=='wikitext'">
+            <label for="um_profile_${field}">${attributes.label}:</label>
+            <textarea name="um_profile_${field}" id="um_profile_${field}" cols="${attributes.cols}" rows="${attributes.rows}">${user[field]}</textarea>
+        </py:when>
+        <py:when test="attributes.type=='multichecks'">
+            <label >${attributes.label}:</label>
+					<span py:for="option in attributes['options']" for="um_profile_${field}_${option}">
+						<input type="checkbox" name="um_profile_${field}" id="um_profile_${field}_${option}" checked="${option in str(user[field]) and 'cheched' or None}"  value="${option}"/>
+						${option.capitalize()}
+					</span>
+        </py:when>
+
+        <py:otherwise>
+            <label for="um_profile_${field}">${attributes.label}:</label>
+            <input type="text" name="um_profile_${field}" id="um_profile_${field}" size="${attributes.cols}" value="${user[field]}"/>
+        </py:otherwise>
+    </div>
+</div>
+</body>
+</html>
