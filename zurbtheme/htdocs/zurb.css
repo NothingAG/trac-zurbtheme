@@ -1351,12 +1351,15 @@ textarea{
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 2em;
     padding-bottom: 2px;
     padding-left: 0.5em;
     padding-right: 0.5em;
     padding-top: 2px;
     text-align: left;
+}
+
+.plugin p{
+    margin-bottom: 0 !important;
 }
 /*
 #trac-plugin-Trac h3{
