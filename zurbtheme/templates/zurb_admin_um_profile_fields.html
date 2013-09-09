@@ -1,0 +1,161 @@
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:xi="http://www.w3.org/2001/XInclude"
+      xmlns:py="http://genshi.edgewall.org/">
+<xi:include href="zurb_admin.html" />
+<head>
+    <title>User Manager :: Profile :: Fields Admin</title>
+</head>
+
+<body>
+
+<h2>User Manager :: Profile :: Manage User Profiles Fields</h2>
+
+<!--! Detail view -->
+<form py:if="cfadmin.display=='detail'" class="custom mod" id="addcf" method="POST">
+    <fieldset class="panel large-9 small-12">
+        <legend>Modify Custom Field:</legend>
+        <div class="field">
+            <label>Name (cannot modify): <strong>${cfadmin.customfield.name}</strong></label>
+        </div>
+        <input name="name" value="${cfadmin.customfield.name}" type="hidden" />
+        <input name="order" value="${cfadmin.customfield.order}" type="hidden" />
+        <div class="field large-5 small-12">
+            <label>Type:<br />
+                <select name="type" id="type">
+                    <option py:for="value in cfadmin.SUPPORTED_TYPES" selected="${cfadmin.customfield.type==value and 'selected' or None}" value="${value}">${value.capitalize()}</option>
+                </select>
+            </label>
+        </div>
+        <div class="field large-5 small-12">
+            <label>Label:<br />
+                <input type="text" name="label" value="${cfadmin.customfield.label}" />
+            </label>
+        </div>
+        <div class="field large-5 small-12">
+            <label>Default value (Not working yet!):<br />
+                <input type="text" name="value" value="${cfadmin.customfield.value}" />
+            </label>
+        </div>
+        <div class="field">
+            <fieldset class="iefix">
+                <label for="options">
+                    Options for Select or Multichecks (for Select, empty first line makes field optional):
+                </label>
+                <p>
+                    <textarea id="options" name="options" rows="5" cols="30">${cfadmin.customfield.options}</textarea>
+                </p>
+            </fieldset>
+        </div>
+        <div class="field large-5 small-12">
+            <label for="cols">Size of Textarea for entry:<br />
+                Columns: <input type="text" name="cols" id="cols" size="5" value="${cfadmin.customfield.cols}" />
+                Rows: <input type="text" size="5" name="rows" id="rows" value="${cfadmin.customfield.rows}" /></label>
+        </div>
+        <div class="field large-5 small-12">
+            <label>Visibility:<br />
+                <select name="internal" id="internal">
+                    <option py:for="value,label in [('0',_('Visible - Public field [Default]') ) ,('1',_('Hidden field')) ]" selected="${cfadmin.customfield.internal==value and 'selected' or None}" value="${value}">${label}</option>
+                </select>
+            </label>
+        </div>
+
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="cancel" value="Cancel" />
+            <input class="tiny button" type="submit" name="save" value="Save" />
+        </div>
+    </fieldset>
+</form>
+
+<form py:if="cfadmin.display=='list'" class="addnew custom" id="addcf" method="POST">
+    <fieldset class="panel large-8 small-12">
+        <legend>Add Custom Field:</legend>
+        <div class="field large-5 small-12">
+            <label>Name:<br />
+                <input type="text" name="name" id="name" />
+            </label>
+        </div>
+        <div class="field large-5 small-12">
+            <label>Type:<br />
+                <select name="type" id="type">
+                    <option py:for="value in cfadmin.SUPPORTED_TYPES"
+                            value="${value}">${value.capitalize()}</option>
+                </select>
+            </label>
+        </div>
+        <div class="field large-5 small-12">
+            <label>Label:<br />
+                <input type="text" name="label" id="label" />
+            </label>
+        </div>
+        <div class="field large-5 small-12">
+            <label for="value">Default value:<br />
+                <input type="text" name="value" id="value" />
+            </label>
+        </div>
+        <div class="field">
+            <fieldset class="iefix">
+                <label for="options">Options:</label>
+                <p>
+                    <textarea id="options" name="options" rows="4" cols="17"></textarea>
+                </p>
+            </fieldset>
+        </div>
+        <div class="field">
+            <label for="cols">Size of Textarea:<br />
+                <div class="large-5 small-12">Cols: <input type="text" name="cols" id="cols" size="2" />
+                </div>
+                <div class="large-5 small-12">Rows: <input type="text" size="2" name="rows" id="rows" />
+                </div>
+            </label>
+        </div>
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="add" value="Add" />
+        </div>
+    </fieldset>
+</form>
+
+<div py:if="cfadmin.display=='list'" py:strip="">
+    <p py:if="not len(cfadmin.customfields)" class="help">
+        No Custom Fields defined for this project.
+    </p>
+    <form py:if="len(cfadmin.customfields)" method="POST" class="custom">
+        <table class="listing" id="cflist">
+            <thead>
+            <tr>
+                <th class="sel">&nbsp;</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Label</th>
+                <th>Order</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr py:for="cf in cfadmin.customfields">
+                <td><input type="checkbox" name="sel" value="${cf.name}" /></td>
+                <td><a href="${cf.href}">${cf.name}</a> <b py:if="cf.internal=='1'" >[Hidden]</b></td>
+                <td>${cf.type}</td>
+                <td>${cf.label}</td>
+                <td class="default">
+                    <select name="order_${cf.name}">
+                        <option py:for="other in cfadmin.customfields"
+                                selected="${other.order==cf.order and 'selected' or None}">
+                            ${other.order}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="buttons">
+            <input class="tiny button" type="submit" name="remove" value="Remove selected items" />
+            <input class="tiny button" type="submit" name="apply" value="Apply changes" />
+        </div>
+    </form>
+</div>
+
+</body>
+
+</html>

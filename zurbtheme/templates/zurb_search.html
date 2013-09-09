@@ -26,7 +26,7 @@
      <div class="large-12">
       <h1><label for="q">Search</label></h1>
       <form id="fullsearch" action="${href.search()}" method="get" class="">
-        <p>
+        <p class="large-7 small-12">
           <input type="text" id="q" name="q" size="40" value="${query}" />
           <input type="hidden" name="noquickjump" value="1" />
           <input class="tiny button" type="submit" value="${_('Search')}" />
@@ -36,7 +36,7 @@
             <div class="large-2 columns">
                 <input type="checkbox" id="${filter.name}" name="${filter.name}"
                        checked="${filter.active or None}" />
-                <label for="${filter.name}">${filter.label}</label>
+                <label class="radius label" for="${filter.name}">${filter.label}</label>
             </div>
           </py:for>
        </p>
