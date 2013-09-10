@@ -1,17 +1,262 @@
-<!--!
-Conditionally render an ''Attach File'' button.
-
+<!--
 Arguments:
- - alist: the data for the list of attachments
- - add_button_title=None: the title of the "Attach" button
+- alist: the data for the list of attachments
+- add_button_title=None: the title of the "Attach" button
+- bh_attach_advanced: toggle jQuery File Upload form on/off
 -->
-<form xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:py="http://genshi.edgewall.org/"
-      xmlns:xi="http://www.w3.org/2001/XInclude"
-      xmlns:i18n="http://genshi.edgewall.org/i18n"
-      py:if="alist.can_create" method="get" action="${alist.attach_href}" id="attachfile">
-    <div>
+
+<?python
+from trac.web import chrome as _chrome
+
+    #if (zurb_attach_advanced and advanced):
+    # _chrome.add_stylesheet(req, 'dashboard/css/bootstrap.css')
+    #_chrome.add_stylesheet(req, 'theme/css/jquery.fileupload-ui.css')
+    #_chrome.add_script(req, 'common/js/jquery-ui.js')
+    #_chrome.add_script(req, 'dashboard/js/tmpl.js')
+    #_chrome.add_script(req, 'theme/js/load-image.js')
+    #_chrome.add_script(req, 'theme/js/canvas-to-blob.js')
+    #_chrome.add_script(req, 'dashboard/js/jquery.iframe-transport.js')
+    #_chrome.add_script(req, 'theme/js/jquery.fileupload.js')
+    #_chrome.add_script(req, 'theme/js/jquery.fileupload-fp.js')
+    #_chrome.add_script(req, 'theme/js/jquery.fileupload-ui.js')
+?>
+
+<div xmlns="http://www.w3.org/1999/xhtml"
+     xmlns:py="http://genshi.edgewall.org/"
+    xmlns:xi="http://www.w3.org/2001/XInclude"
+    xmlns:i18n="http://genshi.edgewall.org/i18n"
+        py:strip="">
+
+    <form py:if="alist.can_create" method="get" action="${alist.attach_href}"
+            id="attachfile" style="display: inline-block">
         <input type="hidden" name="action" value="new" />
-        <input class="tiny button" type="submit" name="attachfilebutton" value="${value_of('add_button_title', None) or _('Attach file')}" />
-    </div>
-</form>
+        <div class="btn-group">
+            <button type="submit" class="btn" name="attachfilebutton">
+                <i class="icon-file"></i> ${value_of('add_button_title', None) or _('Attach file')}
+            </button>
+        </div>
+    </form>
+    <py:if test="advanced and zurb_attach_advanced and alist.can_create and
+ 	        context.resource and context.resource.realm and context.resource.id">
+    <!--! The file upload form used as target for the file upload widget -->
+        <script type="text/x-tmpl" id="tmpl-attach-advanced">
+            <form id="fileupload" action="${alist.attach_href}" method="POST" enctype="multipart/form-data">
+            <!--! The loading indicator is shown during file processing -->
+                <div class="fileupload-loading"></div>
+                <!--! The table listing the files available for upload/download -->
+                <!--! table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table -->
+                <dl py:if="not files_container" class="attachments files"></dl>
+                <!--! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                <div class="row fileupload-buttonbar overlay-target">
+                    <div class="overlay dnd-overlay"></div>
+                    <div class="span7">
+                        <!--! The fileinput-button span is used to style the file input field as button -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                            <span class="btn fileinput-button">
+                                <i class="icon-plus"></i>
+                                <span>Add files...</span>
+                                <input type="file" name="attachment" multiple="" />
+                            </span>
+                            <button type="submit" class="btn tiny start">
+                                <i class="icon-upload"></i>
+                                <span>Start upload</span>
+                            </button>
+                            </div>
+                            <div class="btn-group">
+                                <button type="reset" class="btn tiny cancel">
+                                <i class="icon-ban-circle"></i>
+                                <span>Cancel upload</span>
+                            </button>
+                            <button type="button" class="btn tiny delete">
+                                <i class="icon-trash"></i>
+                                <span>Clear failures</span>
+                            </button>
+                            </div>
+                            <div class="btn-group">
+                            </div>
+                        </div>
+                    </div>
+                    <!--! The global progress information -->
+                    <div class="span5 fileupload-progress fade">
+                        <!--! The global progress bar -->
+                        <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100">
+                            <div class="bar" style="width:0%;"></div>
+                        </div>
+                        <!--! The extended global progress information -->
+                        <div class="progress-extended">&nbsp;</div>
+                    </div>
+                </div>
+            </form>
+        </script>
+
+        <!--! The template to display files available for upload -->
+        <script id="template-upload" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <div class="template-upload fade">
+                <dt>
+                    <i class="icon-file"></i> {%=file.name%}
+                    (<span title=" {%=file.size%} bytes">{%=o.formatFileSize(file.size)%}</span>)
+                    <div class="progress progress-success progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="bar" style="width:0%;"></div></div>
+                    <span class="cancel">{% if (!i) { %}
+                        <button class="btn tiny btn-link">
+                        <i class="icon-remove"></i>
+                        Cancel
+                        </button>
+                    {% } %}</span>
+                </dt>
+                <dd>
+                    {% if (file.exists) { %}
+                    <label class="checkbox" py:if="authname and authname != 'anonymous'">
+                        <small>
+                            <input type="checkbox" name="replace" />
+                            Replace existing attachment of the same name
+                        </small>
+                    </label>
+                    {% } %}
+                    <div class="start input-append">
+                        <input type="text" name="description" placeholder="Description" class="input-xxlarge" />{% if
+                        (!o.options.autoUpload) {
+                        %}<button class="btn tiny" title="Upload">
+                            <i class="icon-upload"></i>
+                            <span>Upload</span>
+                        </button>
+                        {% } %}
+                    </div>
+                </dd>
+            </div>
+
+        {% } %}
+        </script>
+
+        <!--! The template to display files available for download -->
+        <script id="template-download" type="text/x-tmpl">
+        {% for (var i=0, file; file=o.files[i]; i++) { %}
+            <div class="template-download fade" data-id="{%=file.name%}"
+                data-recent="{%=((file.error)? 0 : 1)%}">
+                {% if (file.error) { %}
+                <dt>
+                    <i class="icon-file"></i>
+                    <del>{%=file.name%}</del>
+                </dt>
+                <dd class="error">
+                    <div class="input-append">
+                    <span class="uneditable-input input-xxlarge">
+                        <span class="label label-important">Error</span> {%=file.error%}
+                    </span>
+                    <span class="delete">
+                        <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}" title="Remove">
+                        <i class="icon-trash icon-white"></i>
+                        </button>
+                        <input type="checkbox" name="delete" value="1" checked="checked" />
+                    </span>
+                    </div>
+                </dd>
+                {% } else { %}
+                <dt>
+                    <i class="icon-file"></i>
+                    <a title="View attachment" href="{%=file.url%}">{%=file.name%}</a>
+                    <a title="Download" class="trac-rawlink" href="{%=file.download_url%}">
+                        <i class="icon-download-alt"></i>
+                    </a>
+                    (<span title="{%=file.size%} bytes">{%=o.formatFileSize(file.size)%}</span>) -
+                    added by <em>{%=file.author%}</em>
+                </dt>
+                <dd>{%=file.desc%}</dd>
+                {% } %}
+            </div>
+
+        {% } %}
+        </script>
+
+        <!--! FIXME: Expand template -->
+        <script type="text/javascript">
+            jQuery(function() {
+                jQuery('#attachfile').hide().before(jQuery('#tmpl-attach-advanced').html());
+
+                jQuery(document).bind({
+                    dragleave: function (e) {
+                        jQuery('.dnd-overlay').removeClass('in').removeClass('active');
+                        e.preventDefault();
+                    },
+                    drop: function (e) {
+                        jQuery('.dnd-overlay').removeClass('in').removeClass('active');
+                        e.preventDefault();
+                    },
+                    dragenter: function (e) {
+                        jQuery('.dnd-overlay').addClass('in');
+                        e.preventDefault();
+                    },
+                    dragover: function (e) {
+                        jQuery('.dnd-overlay').addClass('in');
+                        e.preventDefault();
+                    }
+                });
+
+                <py:if test="files_container">
+                    jQuery('$files_container').prependTo('#fileupload').addClass('files');
+                </py:if>
+
+                jQuery('#fileupload').fileupload({
+                    dropZone: jQuery('.fileupload-buttonbar'),
+                    drop: function (e) {
+                            jQuery('.dnd-overlay').removeClass('in').removeClass('active');
+                        },
+                        maxFileSize: ${max_size},
+                        minFileSize: 1,
+                        sequentialUploads: true
+                    }).bind({
+                        dragleave: function(e) {
+                            jQuery(e.target).removeClass('active');
+                        },
+                        dragenter: function(e) {
+                            jQuery(e.target).addClass('active');
+                        },
+                        dragover: function(e) {
+                            jQuery(e.target).addClass('active');
+                        },
+                        fileuploadadd: function (e, data) {
+                            $.each(data.files, function (i, file) {
+                                file.exists = data.form.find(
+                                    '.files div.template-download[data-id="' +
+                                    file.name + '"]').length !== 0;
+                            });
+                        },
+                        fileuploadsubmit : function (e, data) {
+                            var inputs = data.context.find(':input');
+                            var _form_token;
+                            //var _form_token = form_token;
+                            if (!_form_token)
+                                _form_token = data.form
+                                    .find('input[name=__FORM_TOKEN]').val();
+                            data.formData = inputs.serializeArray();
+                            data.formData.push({
+                                name : '__FORM_TOKEN',
+                                value : _form_token
+                            });
+                            data.formData.push({
+                                name : 'action',
+                                value : 'inplace'
+                            });
+                        },
+                        fileuploadcompleted : function (e, data) {
+                            var file = data.result[0];
+                            if (!file.error) {
+                                data.form.find('.files div.template-download[data-id="' +
+                                    file.name + '"]').each(function() {
+                                    var sibling = jQuery(this);
+                                    if (sibling.attr('data-recent') === "1")
+                                        sibling.removeAttr('data-recent');
+                                    else {
+                                        sibling.slideUp('slow', function() {
+                                            sibling.remove();
+                                        });
+                                    }
+                                });
+                            }
+                        }
+                    });
+            })
+        </script>
+    </py:if>
+</div>

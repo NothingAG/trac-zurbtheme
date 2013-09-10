@@ -141,7 +141,7 @@
         <!--! do not show attachments for old versions of this ticket or for new tickets -->
         <py:if test="not version and version != 0 and ticket.exists">
           <xi:include href="zurb_list_of_attachments.html"
-                      py:with="alist = attachments; foldable = True"/>
+                      py:with="alist = attachments; foldable = True; "/>
         </py:if>
 
         <div style="${'display: none' if not changes else None}">

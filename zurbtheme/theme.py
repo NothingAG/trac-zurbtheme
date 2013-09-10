@@ -95,6 +95,8 @@ class ZurbTheme(ThemeBase):
         # Attachment
         'attachment.html' : ('zurb_attachment.html', None),
         'preview_file.html' : ('zurb_preview_file.html', None),
+        'attach_file_form.html' : ('zurb_attach_file_form.html', None),
+        'list_of_attachments.html' : ('zurb_list_of_attachments.html', None),
 
         # Version control
         'revisionlog.html' : ('zurb_revisionlog.html', None),
