@@ -25,7 +25,7 @@ Arguments:
 <py:if test="alist.attachments or alist.can_create">
     <div id="attachments" py:choose="">
         <py:when test="compact and alist.attachments">
-            <h3 class="${'foldable' if foldable else None}">Attachmentsssssss<span class="trac-count">(${len(alist.attachments)})</span></h3>
+            <h3 class="${'foldable' if foldable else None}">Attachments<span class="trac-count">(${len(alist.attachments)})</span></h3>
             <div>
                 <ul>
                     <py:for each="attachment in alist.attachments">
@@ -36,7 +36,7 @@ Arguments:
                     </py:for>
                 </ul>
                 <p py:if="alist.download_href">
-                    <span class="label label-info">Download</span>
+                    <span class="label round secondary">Download</span>
                     all attachments as: <a rel="nofollow" href="$alist.download_href">.zip</a>
                 </p>
             </div>
@@ -54,7 +54,7 @@ Arguments:
                     </div>
                 </dl>
                 <xi:include href="zurb_attach_file_form.html" py:with="advanced = True; files_container = '#attachments dl.attachments'"/>
-                <span py:if="alist.attachments and alist.download_href" style="margin-left: 10px;">Hello World - Download all attachments as: <a rel="nofollow" href="$alist.download_href">.zip</a></span>
+                <span py:if="alist.attachments and alist.download_href" style="margin-left: 10px;">Download all attachments as: <a rel="nofollow" href="$alist.download_href">.zip</a></span>
             </div>
         </py:when>
     </div>
