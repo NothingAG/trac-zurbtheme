@@ -1904,3 +1904,7 @@ input[type="file"]{
 img.userpictures_avatar {
     box-shadow: 0px 0px 0px #444444 !important;
 }
+
+.um_profile_fields .field LABEL {
+    margin-top: 10px;
+}
