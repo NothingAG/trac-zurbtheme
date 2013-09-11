@@ -109,6 +109,7 @@ class ZurbTheme(ThemeBase):
         'history_view.html' : ('zurb_history_view.html', None),
         'timeline.html' : ('zurb_timeline.html', None),
         'roadmap.html': ('zurb_roadmap.html', None),
+        'error.html': ('zurb_error.html', None),
 
         #Differences
         'diff_view.html' : ('zurb_diff_view.html', None),

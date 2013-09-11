@@ -2,24 +2,8 @@
 Arguments:
 - alist: the data for the list of attachments
 - add_button_title=None: the title of the "Attach" button
-- bh_attach_advanced: toggle jQuery File Upload form on/off
+- zurb_attach_advanced: toggle jQuery File Upload form on/off
 -->
-
-<?python
-from trac.web import chrome as _chrome
-
-    #if (zurb_attach_advanced and advanced):
-    # _chrome.add_stylesheet(req, 'dashboard/css/bootstrap.css')
-    #_chrome.add_stylesheet(req, 'theme/css/jquery.fileupload-ui.css')
-    #_chrome.add_script(req, 'common/js/jquery-ui.js')
-    #_chrome.add_script(req, 'dashboard/js/tmpl.js')
-    #_chrome.add_script(req, 'theme/js/load-image.js')
-    #_chrome.add_script(req, 'theme/js/canvas-to-blob.js')
-    #_chrome.add_script(req, 'dashboard/js/jquery.iframe-transport.js')
-    #_chrome.add_script(req, 'theme/js/jquery.fileupload.js')
-    #_chrome.add_script(req, 'theme/js/jquery.fileupload-fp.js')
-    #_chrome.add_script(req, 'theme/js/jquery.fileupload-ui.js')
-?>
 
 <div xmlns="http://www.w3.org/1999/xhtml"
      xmlns:py="http://genshi.edgewall.org/"
@@ -32,7 +16,7 @@ from trac.web import chrome as _chrome
         <input type="hidden" name="action" value="new" />
         <input type="submit" class="button tiny" name="attachfilebutton" value="${value_of('add_button_title', None) or _('Attach file')}" />
     </form>
-    <py:if test="advanced and zurb_attach_advanced and alist.can_create and
+    <py:if test="zurb_attach_advanced and alist.can_create and
  	        context.resource and context.resource.realm and context.resource.id">
     <!--! The file upload form used as target for the file upload widget -->
         <script type="text/x-tmpl" id="tmpl-attach-advanced">
@@ -112,6 +96,9 @@ from trac.web import chrome as _chrome
                         </small>
                     </label>
                     {% } %}
+                    <input type="hidden" name="realm" value="${context.resource.realm}" />
+                    <input type="hidden" name="id" value="${context.resource.id}" />
+
                     <div class="row">
                     <div class="row large-7 start input-append">
                         <div class="large-5 small-9 columns">
