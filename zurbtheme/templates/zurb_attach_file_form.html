@@ -16,7 +16,8 @@ Arguments:
         <input type="hidden" name="action" value="new" />
         <input type="submit" class="button tiny" name="attachfilebutton" value="${value_of('add_button_title', None) or _('Attach file')}" />
     </form>
-    <py:if test="zurb_attach_advanced and alist.can_create and
+
+    <py:if test="advanced and zurb_attach_advanced and alist.can_create and
  	        context.resource and context.resource.realm and context.resource.id">
     <!--! The file upload form used as target for the file upload widget -->
         <script type="text/x-tmpl" id="tmpl-attach-advanced">
@@ -25,7 +26,10 @@ Arguments:
                 <div class="fileupload-loading"></div>
                 <!--! The table listing the files available for upload/download -->
                 <!--! table role="presentation" class="table table-striped"><tbody class="files" data-toggle="modal-gallery" data-target="#modal-gallery"></tbody></table -->
-                <dl py:if="not files_container" class="attachments files"></dl>
+
+                <!-- REMOVED because if no file list exists then not create de dl with class attachments file-->
+                <!-- <dl py:if="not files_container" class="attachments files"></dl>-->
+                <dl class="attachments files"></dl>
                 <!--! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                 <div class="fileupload-buttonbar overlay-target">
                     <div class="overlay dnd-overlay"></div>
@@ -35,9 +39,10 @@ Arguments:
                             <div class="btn-group">
                             <span class="btn btn-forfileinput fileinput-button">
                                 <i class="icon-plus"></i>
-                                <span>Add files...</span>
+                                <span>+ Add files...</span>
                                 <input class="btn tiny" type="file" name="attachment" multiple="" />
                             </span>
+
                             <button type="submit" class="tiny start">
                                 <i class="icon-upload"></i>
                                 <span>Start upload</span>
@@ -187,7 +192,7 @@ Arguments:
                 });
 
                 <py:if test="files_container">
-                    jQuery('$files_container').prependTo('#fileupload').addClass('files');
+                   /* jQuery('$files_container').prependTo('#fileupload').addClass('files');*/
                 </py:if>
 
                 jQuery('#fileupload').fileupload({

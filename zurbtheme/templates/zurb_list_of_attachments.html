@@ -7,6 +7,7 @@ Arguments:
  - add_button_title=None: the title of the "Attach" button
  - foldable=False: if True, make the list of attachments foldable
 -->
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:py="http://genshi.edgewall.org/"
       xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -22,6 +23,7 @@ Arguments:
        </span>) - added by <em>${authorinfo(attachment.author)}</em> ${pretty_dateinfo(attachment.date)}.</span>
     </i18n:msg>
 </py:def>
+
 <py:if test="alist.attachments or alist.can_create">
     <div id="attachments" py:choose="">
         <py:when test="compact and alist.attachments">
@@ -42,7 +44,7 @@ Arguments:
             </div>
         </py:when>
         <py:when test="not compact">
-            <h3 id="comment:attachments" class="${'foldable' if foldable else None}">Attachments <span class="trac-count">(${len(alist.attachments)})</span></h3>
+            <span id="comment:attachments" class="h3attachment ${'foldable' if foldable else None}">Attachments <span class="trac-count">(${len(alist.attachments)})</span></span>
             <div py:if="alist.attachments or alist.can_create" class="attachments">
                 <dl py:if="alist.attachments" class="attachments">
                     <div py:for="attachment in alist.attachments"
