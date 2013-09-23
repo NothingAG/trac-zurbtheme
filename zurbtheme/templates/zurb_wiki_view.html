@@ -73,7 +73,7 @@
         </py:otherwise>
       </div>
         <xi:include href="zurb_list_of_attachments.html"
-                    py:with="alist = attachments; compact = True; foldable = True"/>
+                    py:with="alist = attachments; foldable = True;"/>
 
         <py:with vars="delete_perm = 'WIKI_DELETE' in perm(page.resource);
                      rename_perm = 'WIKI_RENAME' in perm(page.resource)">
@@ -107,7 +107,8 @@
                             </div>
                         </form>
                         <py:if test="page.exists">
-                            <xi:include href="zurb_attach_file_form.html" py:with="alist = attachments"/>
+                           <!-- Removed to show always the list of files with jq file upload -->
+                           <!-- <xi:include href="zurb_attach_file_form.html" py:with="alist = attachments"/> -->
                         </py:if>
                     </py:if>
                     <form method="get" action="${href.wiki(page.name)}" id="rename" py:if="page.exists and rename_perm">

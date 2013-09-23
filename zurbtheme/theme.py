@@ -95,6 +95,8 @@ class ZurbTheme(ThemeBase):
         # Attachment
         'attachment.html' : ('zurb_attachment.html', None),
         'preview_file.html' : ('zurb_preview_file.html', None),
+        'attach_file_form.html' : ('zurb_attach_file_form.html', None),
+        'list_of_attachments.html' : ('zurb_list_of_attachments.html', None),
 
         # Version control
         'revisionlog.html' : ('zurb_revisionlog.html', None),
@@ -107,6 +109,7 @@ class ZurbTheme(ThemeBase):
         'history_view.html' : ('zurb_history_view.html', None),
         'timeline.html' : ('zurb_timeline.html', None),
         'roadmap.html': ('zurb_roadmap.html', None),
+        'error.html': ('zurb_error.html', None),
 
         #Differences
         'diff_view.html' : ('zurb_diff_view.html', None),

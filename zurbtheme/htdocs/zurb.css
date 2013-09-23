@@ -39,7 +39,7 @@ a{
 
 a:hover,
 a:focus, .side-nav li a:hover, .side-nav li a:focus {
-    color: #16C0EA;
+    /*color: #16C0EA;*/
 }
 
 #changelog a:hover {
@@ -1183,6 +1183,21 @@ code {
     border: 1px solid #e1e1e8;
 }
 
+table.code tbody th {
+    background: none repeat scroll 0 0 #EEEEDD;
+    color: #888866;
+    font-weight: normal;
+    padding: 0 0.5em;
+    text-align: right;
+    vertical-align: top;
+}
+
+table.code th {
+    border-bottom: 1px solid #999988;
+    border-right: 1px solid #D7D7D7;
+    font-size: 11px;
+}
+
 pre {
     display: block;
     padding: 9.5px;
@@ -1351,12 +1366,15 @@ textarea{
     margin-bottom: 0;
     margin-left: 0;
     margin-right: 0;
-    margin-top: 2em;
     padding-bottom: 2px;
     padding-left: 0.5em;
     padding-right: 0.5em;
     padding-top: 2px;
     text-align: left;
+}
+
+.plugin p{
+    margin-bottom: 0 !important;
 }
 /*
 #trac-plugin-Trac h3{
@@ -1875,6 +1893,10 @@ a.trac-rawlink, a.trac-ziplink {
     display: list-item;
     list-style: square outside none;
 }
+
+div #attachments {
+    margin-bottom: 10px;
+}
 /* @end */
 
 input[type="file"]{
@@ -1900,4 +1922,44 @@ input[type="file"]{
 
 img.userpictures_avatar {
     box-shadow: 0px 0px 0px #444444 !important;
+}
+
+.um_profile_fields .field LABEL {
+    margin-top: 10px;
+}
+
+.progress {
+    background-color: #F5F5F5;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) inset;
+    height: 20px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.progress-bar-success {
+    background-color: #5CB85C;
+}
+
+.h3attachment{
+    font-size: 1.25em !important; line-height: 1.4;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.btn-forfileinput
+{
+    margin-top: 5px;
+    font-size: 1.15em;
+    font-family: "Helvetica Neue","Helvetica",Helvetica,Arial,sans-serif;
+    font-weight: bold;
+}
+
+.fade.in {
+    opacity: 1;
+}
+
+.fade {
+    opacity: 0;
 }

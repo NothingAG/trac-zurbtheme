@@ -237,6 +237,16 @@ table.chglist { margin-top: 0 }
     display: inline !important;
 }
 
+#info th {
+    font-weight: bold;
+    text-align: left;
+}
+
+#info th, #info td {
+    font-size: 85%;
+    padding: 2px 0.5em;
+    vertical-align: top;
+}
 
 #info {
     margin-bottom: 0;
