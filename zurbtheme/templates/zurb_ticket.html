@@ -140,8 +140,7 @@
 
         <!--! do not show attachments for old versions of this ticket or for new tickets -->
         <py:if test="not version and version != 0 and ticket.exists">
-          <xi:include href="zurb_list_of_attachments.html"
-                      py:with="alist = attachments; foldable = True"/>
+          <xi:include href="zurb_list_of_attachments.html" py:with="alist = attachments; foldable = True;"/>
         </py:if>
 
         <div style="${'display: none' if not changes else None}">
@@ -195,7 +194,7 @@
             </div>
             <!--! Comment field -->
             <fieldset class="panel">
-              <label for="comment" class="right" i18n:msg="">You may use
+              <label for="comment" class="" i18n:msg="">You may use
                 <a tabindex="42" href="${href.wiki('WikiFormatting')}">WikiFormatting</a>
                 here.
               </label>
