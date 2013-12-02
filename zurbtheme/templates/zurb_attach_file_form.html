@@ -29,7 +29,7 @@ Arguments:
 
                 <!-- REMOVED because if no file list exists then not create de dl with class attachments file-->
                 <!-- <dl py:if="not files_container" class="attachments files"></dl>-->
-                <dl class="attachments files"></dl>
+                <!--dl class="attachments files"></dl-->
                 <!--! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                 <div class="fileupload-buttonbar overlay-target">
                     <div class="overlay dnd-overlay"></div>
@@ -77,11 +77,11 @@ Arguments:
         <!--! The template to display files available for upload -->
         <script id="template-upload" type="text/x-tmpl">
         {% for (var i=0, file; file=o.files[i]; i++) { %}
-            <div class="template-upload fade">
+            <div class="template-upload fade row" style="margin-left:0px;">
                 <dt>
                     <i class="icon-file"></i> {%=file.name%}
                     (<span title=" {%=file.size%} bytes">{%=o.formatFileSize(file.size)%}</span>)
-                  <div class="row large-12">
+                  <div class="large-12">
                      <span style="margin-top:10px; float:left;" class="cancel">{% if (!i) { %}
                         <button class="tiny btn-link">
                             <i class="icon-remove"></i>
@@ -94,32 +94,34 @@ Arguments:
                 </dt>
                 <dd>
                     {% if (file.exists) { %}
+                    <div class="row" style="float:left; margin-left:15px;">
                     <label class="checkbox" py:if="authname and authname != 'anonymous'">
-                        <small>
+                        <div style="font-size:11px;">
                             <input type="checkbox" name="replace" />
                             Replace existing attachment of the same name
-                        </small>
+                        </div>
                     </label>
+                    </div>
                     {% } %}
                     <input type="hidden" name="realm" value="${context.resource.realm}" />
                     <input type="hidden" name="id" value="${context.resource.id}" />
 
-                    <div class="row">
-                    <div class="row large-7 start input-append">
-                        <div class="large-5 small-9 columns">
-                          <input type="text" name="description" placeholder="Description" class="input-xxlarge" />
+                    <div class="columns" style="float:left; margin-left: -15px;">
+                        <div class="row large-7 start input-append">
+                            <div class="large-5 small-9 columns">
+                              <input type="text" name="description" placeholder="Description" class="input-xxlarge" />
+                            </div>
+                            {% if
+                            (!o.options.autoUpload) {
+                            %}
+                            <div class="large-2" style="float:left;">
+                                <button class="small" title="Upload">
+                                    <i class="icon-upload"></i>
+                                    <span>Upload</span>
+                                </button>
+                            </div>
+                            {% } %}
                         </div>
-                        {% if
-                        (!o.options.autoUpload) {
-                        %}
-                        <div class="large-2" style="float:left;">
-                            <button class="small" title="Upload">
-                                <i class="icon-upload"></i>
-                                <span>Upload</span>
-                            </button>
-                        </div>
-                        {% } %}
-                    </div>
                     </div>
                 </dd>
             </div>
@@ -153,10 +155,10 @@ Arguments:
                 {% } else { %}
                 <dt>
                     <i class="icon-file"></i>
-                    <a title="View attachment" href="{%=file.url%}">{%=file.name%}</a>
                     <a title="Download" class="trac-rawlink" href="{%=file.download_url%}">
                         <i class="icon-download-alt"></i>
                     </a>
+                    <a title="View attachment" href="{%=file.url%}">{%=file.name%}</a>
                     (<span title="{%=file.size%} bytes">{%=o.formatFileSize(file.size)%}</span>) -
                     added by <em>{%=file.author%}</em>
                 </dt>
@@ -192,7 +194,7 @@ Arguments:
                 });
 
                 <py:if test="files_container">
-                   /* jQuery('$files_container').prependTo('#fileupload').addClass('files');*/
+                    jQuery('$files_container').prependTo('#fileupload').addClass('files');
                 </py:if>
 
                 jQuery('#fileupload').fileupload({
@@ -215,6 +217,9 @@ Arguments:
                         },
                         fileuploadadd: function (e, data) {
                             $.each(data.files, function (i, file) {
+                                if (!(data.form)){
+                                    data.form = $("form#fileupload");
+                                }
                                 file.exists = data.form.find(
                                     '.files div.template-download[data-id="' +
                                     file.name + '"]').length !== 0;
