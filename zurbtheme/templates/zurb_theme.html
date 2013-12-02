@@ -98,10 +98,10 @@
                 <li py:if="chrome.nav.mainnav"
                       py:for="idx, item in enumerate(i for i in chrome.nav.mainnav if i.name in mainnav_show)"
                       class="${classes(first_last(idx, chrome.nav.mainnav), active=item.active)}">${item.label}</li>
-                <li class="has-dropdown ${all(not i.active for i in chrome.nav.mainnav if i.name in mainnav_show) and 'active' or None}"
+              <!--  <li class="has-dropdown ${all(not i.active for i in chrome.nav.mainnav if i.name in mainnav_show) and 'active' or None}"
                       py:if="len([i for i in chrome.nav.metanav if i.name not in metanav_hide] +
                              [i for i in chrome.nav.mainnav if i.name not in mainnav_show])"> <a href="#">More</a>
-                  <ul class="dropdown">
+                  <ul class="dropdown"> -->
                     <li py:if="chrome.nav.mainnav"
                               py:for="idx, item in enumerate(i for i in chrome.nav.mainnav if i.name not in mainnav_show)"
                               class="${classes(first_last(idx, chrome.nav.mainnav))}">${item.label}</li>
@@ -110,8 +110,8 @@
                                   py:if="item.name not in metanav_hide"
                                   class="${classes(first_last(idx, chrome.nav.metanav), active=item.active)}">${item.label}</li>
                     </py:if>
-                  </ul>
-                </li>
+                 <!-- </ul>
+                </li>-->
               </ul>
             </section>
           </nav>
