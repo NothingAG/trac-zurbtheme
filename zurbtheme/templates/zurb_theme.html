@@ -33,7 +33,7 @@
               <py:with vars="meta_items = dict([i.name, i] for i in chrome.nav.metanav)">
                 <div id="usermenu" class="row large-12 right">
                   <div class="metanav"> <span id="nav_login" py:choose="">
-                    <py:when test="req.authname and req.authname != 'anonymous'"> <i class="icon-user"/>${req.authname} </py:when>
+                    <py:when test="req.authname and req.authname != 'anonymous'"> <i class="fi-torso size-18"/> ${req.authname} </py:when>
                     <py:otherwise> <a href="${req.href.login()}">${_("Login")}</a> </py:otherwise>
                     </span> <span py:if="'logout' in meta_items" id="nav_logout"> ${meta_items.logout.label} </span> <span py:if="'prefs' in meta_items"> ${meta_items.prefs.label} </span> <span py:if="'zadmin' in meta_items"> ${meta_items.zadmin.label} </span> <span py:if="'help' in meta_items"> ${meta_items.help.label} </span> <span class="last" py:if="'about' in meta_items"> ${meta_items.about.label} </span> </div>
                 </div>
