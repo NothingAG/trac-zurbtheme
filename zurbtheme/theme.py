@@ -167,6 +167,7 @@ class ZurbTheme(ThemeBase):
 
         if self.is_active_theme:
             add_stylesheet(req, 'theme/css/foundation.css')
+            add_stylesheet(req, 'theme/css/foundation-icons.css')
             add_stylesheet(req, 'theme/css/zurb_browser.css')
             add_stylesheet(req, 'theme/css/zurb_milestone.css')
             add_stylesheet(req, 'theme/css/zurb_tickets.css')

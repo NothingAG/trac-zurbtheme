@@ -7,8 +7,8 @@ setup(
   name = 'TracZurbTheme',
   version = '1.0',
   packages = ['zurbtheme'],
-  package_data = {'zurbtheme': ['htdocs/*.*', 'htdocs/css/*.css', 'htdocs/js/*.js', 'htdocs/img/*.*',
-                                'templates/*.html']},
+  package_data = {'zurbtheme': ['htdocs/*.*', 'htdocs/css/*.woff', 'htdocs/css/*.css', 'htdocs/js/*.js',
+                                'htdocs/img/*.*', 'templates/*.html']},
 
   author = "Jorge Luis Casado Gandolff",
   author_email = 'jcasado81@gmail.com',
