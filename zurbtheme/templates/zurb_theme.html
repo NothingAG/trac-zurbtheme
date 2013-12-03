@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:xi="http://www.w3.org/2001/XInclude"
       xmlns:py="http://genshi.edgewall.org/"
+      xmlns:i18n="http://genshi.edgewall.org/i18n"
       py:strip="">
 
 <div py:def="navigation(category)" id="${category}" class="nav">
@@ -123,13 +124,22 @@
       <div class="row large-3 columns collapse">
         <xi:include py:if="value_of('resourcepath_template')" href="zurb_wiki_page_path.html" />
       </div>
-      <div class="row large-2 columns" style="margin-top: -7px;">
+      <div class="row large-2 columns right" style="margin-top: -7px;">
         <div id="ctxtnav" class="nav">
           <ul class="breadcrumbs" py:if="chrome.ctxtnav">
             <li py:for="i, elm in enumerate(chrome.ctxtnav)"
                    class="${classes(first_last(i, chrome.ctxtnav))}">$elm</li>
           </ul>
         </div>
+          <div py:if="not version" class="trac-modifiedby">
+           <py:if test="page.time">
+            <span i18n:msg="reldate" class="round secondary label">
+              <a href="${href.wiki(page.name, action='diff', version=page.version)}"
+                 title="$last_modification">Last modified</a> ${pretty_dateinfo(page.time)}
+            </span>
+              <span class="trac-print" i18n:msg="date">Last modified on ${format_datetime(page.time)}</span>
+           </py:if>
+          </div>
       </div>
         <div id="warning" py:if="chrome.warnings" class="system-message columns"> <a class="trac-close-msg" href="#" title="Hide this warning"><span class="round label">close</span></a>
           <py:choose test="len(chrome.warnings)"> <strong>Warning:</strong>

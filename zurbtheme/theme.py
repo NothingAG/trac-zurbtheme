@@ -178,6 +178,9 @@ class ZurbTheme(ThemeBase):
             #add_script(req, 'theme/js/zepto.js')
             #add_script(req, 'theme/js/jquery.js')
 
+        # if data no has the key page means that am not on a wiki page, initialize value o page in ""
+        if not data.has_key('page'): data['page'] = "";
+
         #if template is using user manager plugin...
         if template=="admin_um.html":
             if data['user_manager'].has_key('panel'):
