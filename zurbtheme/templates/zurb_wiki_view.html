@@ -43,7 +43,6 @@
                 </tbody>
             </table>
         </py:if>
-
         <div class="wikipage searchable" py:choose="" xml:space="preserve">
         <py:when test="page.exists">
           <div id="wikipage" class="trac-content" py:content="wiki_to_html(context, text)" />
@@ -54,13 +53,13 @@
                  _('Version %(version)s by %(author)s',
                    version=page.version, author=format_author(page.author)))
           ?>
-          <div py:if="not version" class="trac-modifiedby">
+      <!--    <div py:if="not version" class="trac-modifiedby">
             <span i18n:msg="reldate" class="round secondary label">
               <a href="${href.wiki(page.name, action='diff', version=page.version)}"
                  title="$last_modification">Last modified</a> ${pretty_dateinfo(page.time)}
             </span>
             <span class="trac-print" i18n:msg="date">Last modified on ${format_datetime(page.time)}</span>
-          </div>
+          </div> -->
         </py:when>
         <py:otherwise>
           <p i18n:msg="name">The page ${name_of(page.resource)} does not exist. You can create it here.</p>

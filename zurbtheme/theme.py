@@ -167,6 +167,7 @@ class ZurbTheme(ThemeBase):
 
         if self.is_active_theme:
             add_stylesheet(req, 'theme/css/foundation.css')
+            add_stylesheet(req, 'theme/css/foundation-icons.css')
             add_stylesheet(req, 'theme/css/zurb_browser.css')
             add_stylesheet(req, 'theme/css/zurb_milestone.css')
             add_stylesheet(req, 'theme/css/zurb_tickets.css')
@@ -176,6 +177,9 @@ class ZurbTheme(ThemeBase):
             #add_script(req, 'theme/js/jquery.js')
             #add_script(req, 'theme/js/zepto.js')
             #add_script(req, 'theme/js/jquery.js')
+
+        # if data no has the key page means that am not on a wiki page, initialize value o page in ""
+        if not data.has_key('page'): data['page'] = "";
 
         #if template is using user manager plugin...
         if template=="admin_um.html":

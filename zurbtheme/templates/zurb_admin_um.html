@@ -40,12 +40,12 @@
             <th align="left" py:for="cells in sorted(user_manager.cells, key=itemgetter('order'))"
                 class="${sort == cells.name and (asc == '1' and 'asc' or 'desc') or None}">
                 <a title="${_('Sort by %(label)s %(direction)s',
+                                         label=cells.label,
                                          direction=(sort == cells.name and asc == '1' and
                                                     _('(descending)') or _('(ascending)')))}"
                    href="${href.admin('accounts/users', sort=cells.name,
                                                 asc=sort == cells.name and asc == '1' and '0' or '1')}">
                     ${cells.label}
-                    label=cells.label,
                 </a>
             </th>
             <th width="1%" align="center">Actions</th>
