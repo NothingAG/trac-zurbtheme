@@ -55,7 +55,7 @@ Arguments:
                         </dd>
                     </div>
                 </dl>
-                <xi:include href="zurb_attach_file_form.html" py:with="advanced = True; files_container = '#attachments dl.attachments'"/>
+                <xi:include href="zurb_attach_file_form.html" py:with="advanced = True; qtyattachment = len(alist.attachments); files_container = '#attachments dl.attachments'"/>
                 <span py:if="alist.attachments and alist.download_href" style="margin-left: 10px;">Download all attachments as: <a rel="nofollow" href="$alist.download_href">.zip</a></span>
             </div>
         </py:when>
