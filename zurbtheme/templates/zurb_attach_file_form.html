@@ -29,8 +29,9 @@ Arguments:
 
                 <!-- REMOVED because if no file list exists then not create de dl with class attachments file-->
                 <!-- <dl py:if="not files_container" class="attachments files"></dl>-->
-                <!--dl class="attachments files"></dl-->
-                <!--! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
+                <!-- <dl class="attachments files"></dl>-->
+               <dl py:if="not qtyattachment" class="attachments files"></dl>
+               <!--! The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
                 <div class="fileupload-buttonbar overlay-target">
                     <div class="overlay dnd-overlay"></div>
                     <div class="span7">
@@ -146,7 +147,7 @@ Arguments:
                     </span>
                     <span class="delete">
                         <button class="tiny" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}" title="Remove">
-                        <i class="fi-trash icon-white"></i>Remove
+                        <i class="fi-trash icon-white"></i> Remove
                         </button>
                         <input type="checkbox" name="delete" value="1" checked="checked" />
                     </span>
